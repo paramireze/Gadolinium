@@ -11,8 +11,6 @@
 		107ECA18210DEAF100250945 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107ECA17210DEAF100250945 /* ViewController.swift */; };
 		107ECA1B210DEAF100250945 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 107ECA19210DEAF100250945 /* Main.storyboard */; };
 		107ECA1D210DEAF400250945 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 107ECA1C210DEAF400250945 /* Assets.xcassets */; };
-		107ECA20210DEAF400250945 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 107ECA1E210DEAF400250945 /* LaunchScreen.storyboard */; };
-		107ECA28210DED1100250945 /* GadoliniumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107ECA27210DED1100250945 /* GadoliniumViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,9 +19,7 @@
 		107ECA17210DEAF100250945 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		107ECA1A210DEAF100250945 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		107ECA1C210DEAF400250945 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		107ECA1F210DEAF400250945 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		107ECA21210DEAF400250945 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		107ECA27210DED1100250945 /* GadoliniumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GadoliniumViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,9 +56,7 @@
 				107ECA17210DEAF100250945 /* ViewController.swift */,
 				107ECA19210DEAF100250945 /* Main.storyboard */,
 				107ECA1C210DEAF400250945 /* Assets.xcassets */,
-				107ECA1E210DEAF400250945 /* LaunchScreen.storyboard */,
 				107ECA21210DEAF400250945 /* Info.plist */,
-				107ECA27210DED1100250945 /* GadoliniumViewController.swift */,
 			);
 			path = Gadolinium;
 			sourceTree = "<group>";
@@ -125,7 +119,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				107ECA20210DEAF400250945 /* LaunchScreen.storyboard in Resources */,
 				107ECA1D210DEAF400250945 /* Assets.xcassets in Resources */,
 				107ECA1B210DEAF100250945 /* Main.storyboard in Resources */,
 			);
@@ -138,7 +131,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				107ECA28210DED1100250945 /* GadoliniumViewController.swift in Sources */,
 				107ECA18210DEAF100250945 /* ViewController.swift in Sources */,
 				107ECA16210DEAF100250945 /* AppDelegate.swift in Sources */,
 			);
@@ -153,14 +145,6 @@
 				107ECA1A210DEAF100250945 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		107ECA1E210DEAF400250945 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				107ECA1F210DEAF400250945 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
