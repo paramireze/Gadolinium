@@ -38,6 +38,9 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
+                                <connections>
+                                    <action selector="calculateDoseWeight:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="s97-tf-tQd"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4wG-7g-Kvo">
                                 <rect key="frame" x="120" y="167" width="97" height="30"/>
@@ -45,6 +48,9 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
+                                <connections>
+                                    <action selector="calculateDoseWeightChange:" destination="BYZ-38-t0r" eventType="editingChanged" id="x1C-Oe-T31"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Weight" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nX4-Fe-8tb">
                                 <rect key="frame" x="40" y="172" width="54" height="21"/>
@@ -122,6 +128,11 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <value key="contentSizeForViewInPopover" type="size" width="365" height="667"/>
+                    <connections>
+                        <outlet property="doseTextField" destination="DSQ-jD-4VC" id="J5z-cj-c7w"/>
+                        <outlet property="resultLabel" destination="TCl-yp-eDn" id="xqh-rc-rHI"/>
+                        <outlet property="weightTextField" destination="4wG-7g-Kvo" id="DOp-8H-f1P"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
