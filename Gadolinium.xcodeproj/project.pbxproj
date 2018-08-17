@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		102FF4EA2125A09900CEFD3F /* ViewControllerDeuce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102FF4E92125A09900CEFD3F /* ViewControllerDeuce.swift */; };
 		107ECA16210DEAF100250945 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107ECA15210DEAF100250945 /* AppDelegate.swift */; };
 		107ECA18210DEAF100250945 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107ECA17210DEAF100250945 /* ViewController.swift */; };
 		107ECA1B210DEAF100250945 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 107ECA19210DEAF100250945 /* Main.storyboard */; };
@@ -14,6 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		102FF4E92125A09900CEFD3F /* ViewControllerDeuce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerDeuce.swift; sourceTree = "<group>"; };
 		107ECA12210DEAF100250945 /* Gadolinium.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gadolinium.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		107ECA15210DEAF100250945 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		107ECA17210DEAF100250945 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -57,6 +59,7 @@
 				107ECA19210DEAF100250945 /* Main.storyboard */,
 				107ECA1C210DEAF400250945 /* Assets.xcassets */,
 				107ECA21210DEAF400250945 /* Info.plist */,
+				102FF4E92125A09900CEFD3F /* ViewControllerDeuce.swift */,
 			);
 			path = Gadolinium;
 			sourceTree = "<group>";
@@ -131,6 +134,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				102FF4EA2125A09900CEFD3F /* ViewControllerDeuce.swift in Sources */,
 				107ECA18210DEAF100250945 /* ViewController.swift in Sources */,
 				107ECA16210DEAF100250945 /* AppDelegate.swift in Sources */,
 			);
