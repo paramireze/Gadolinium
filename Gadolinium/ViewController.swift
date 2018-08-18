@@ -12,8 +12,10 @@ class ViewController: UIViewController {
 
     //MARK: -- IBOutputs
     @IBOutlet weak var doseTextField: UITextField!
+    
     @IBOutlet weak var weightTextField: UITextField!
-    @IBOutlet weak var resultLabel: UILabel!
+    @IBOutlet weak var resultTextField: UILabel!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,27 +29,17 @@ class ViewController: UIViewController {
 
     //MARK: --IBActions
     @IBAction func calculateDoseWeight(_ sender: Any) {
-        print("yo")
-        guard let dose = doseTextField.text, !dose.isEmpty else {
-            return
-        }
+       
+        let dose: String = doseTextField.text ?? ""
+        let weight: String = weightTextField.text ?? ""
         
-        guard let weight = weightTextField.text, !weight.isEmpty else {
-            return
+        
+        if !dose.isEmpty && !weight.isEmpty {
+            resultTextField.text = "yoyo"
         }
         print("jo")
     }
     
-    @IBAction func calculateDoseWeightChange(_ sender: Any) {
-        print("yo2")
-        guard let dose = doseTextField.text, !dose.isEmpty else {
-            return
-        }
-        
-        guard let weight = weightTextField.text, !weight.isEmpty else {
-            return
-        }
-        print("jo2")
-    }
+    
 }
 
