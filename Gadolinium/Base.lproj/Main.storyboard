@@ -33,13 +33,13 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="qyT-Yq-dhW">
-                                        <rect key="frame" x="0.0" y="40" width="375" height="50"/>
+                                        <rect key="frame" x="0.0" y="40" width="375" height="30"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="Fxn-6T-jbE"/>
+                                            <constraint firstAttribute="height" constant="30" id="Fxn-6T-jbE"/>
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="XzU-s7-qSi">
-                                        <rect key="frame" x="0.0" y="90" width="375" height="50"/>
+                                        <rect key="frame" x="0.0" y="70" width="375" height="50"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dose" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cPF-Oy-stF">
                                                 <rect key="frame" x="0.0" y="0.0" width="90" height="50"/>
@@ -60,6 +60,8 @@
                                                 <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                                                 <connections>
                                                     <action selector="doseTextChange:" destination="BYZ-38-t0r" eventType="editingChanged" id="AYh-vo-I7C"/>
+                                                    <action selector="doseTextExit:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="fAN-ht-Ulg"/>
+                                                    <action selector="dostTextBegin:" destination="BYZ-38-t0r" eventType="editingDidBegin" id="iox-jg-c86"/>
                                                 </connections>
                                             </textField>
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iqp-k3-fN5">
@@ -91,13 +93,13 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="rnu-hw-DUh">
-                                        <rect key="frame" x="0.0" y="140" width="375" height="30"/>
+                                        <rect key="frame" x="0.0" y="120" width="375" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="hd7-iD-I50"/>
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="YPM-CP-eFC">
-                                        <rect key="frame" x="0.0" y="170" width="375" height="50"/>
+                                        <rect key="frame" x="0.0" y="150" width="375" height="50"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weight" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PLQ-yJ-tyw">
                                                 <rect key="frame" x="0.0" y="0.0" width="90" height="50"/>
@@ -117,7 +119,9 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                                                 <connections>
-                                                    <action selector="weightTextChange:" destination="BYZ-38-t0r" eventType="editingChanged" id="avK-tt-vX4"/>
+                                                    <action selector="weightTextBegin:" destination="BYZ-38-t0r" eventType="editingDidBegin" id="bUp-Wv-lje"/>
+                                                    <action selector="weightTextChange:" destination="BYZ-38-t0r" eventType="editingChanged" id="rxB-CI-Tkc"/>
+                                                    <action selector="weightTextExit:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="jRa-qG-Mzu"/>
                                                 </connections>
                                             </textField>
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LkC-ef-YC3">
@@ -163,13 +167,13 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="vAa-eD-Npd">
-                                        <rect key="frame" x="0.0" y="220" width="375" height="50"/>
+                                        <rect key="frame" x="0.0" y="200" width="375" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="r4O-fb-Yec"/>
                                         </constraints>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aFa-fa-6lS">
-                                        <rect key="frame" x="0.0" y="270" width="375" height="50"/>
+                                        <rect key="frame" x="0.0" y="250" width="375" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="YvX-84-M1z"/>
                                         </constraints>
@@ -178,13 +182,13 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d7C-vn-aSd">
-                                        <rect key="frame" x="0.0" y="320" width="375" height="51"/>
+                                        <rect key="frame" x="0.0" y="300" width="375" height="70.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="V = (D x W) / C" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HZM-NM-Yxt">
-                                        <rect key="frame" x="0.0" y="371" width="375" height="20"/>
+                                        <rect key="frame" x="0.0" y="370.5" width="375" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -192,28 +196,21 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cES-NR-lbV">
                                         <rect key="frame" x="0.0" y="391" width="375" height="267"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="skH-oV-9aA">
-                                                <rect key="frame" x="8" y="-13" width="359" height="251"/>
-                                                <string key="text">Recommend rounding to the nearest ml, except for small doses, e.g., for children*
-
-12.4 ml should be 12ml
-13.9 ml should be 14ml
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RlU-va-bt3">
+                                                <rect key="frame" x="18" y="0.0" width="341" height="185"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <mutableString key="text">Recommended Rounding to the nearest ml, except for children*
+        
+12.4 ml should be 12ml 13.9 ml should be 14mldose
 * but 1.2 ml should be 1.2ml
-
-OK to round down to nearest vial size in many circumstances to save opening new vial
-e.g., If calculated dose is 11ml, use 10ml instead.</string>
-                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
+        
+OK to round down to nearest vial size in many circumstances to save opening new vial e.g., if calculated dose is 11ml, use 10ml instead</mutableString>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstItem="skH-oV-9aA" firstAttribute="leading" secondItem="cES-NR-lbV" secondAttribute="leading" constant="8" id="0Yj-VW-n2V"/>
-                                            <constraint firstAttribute="bottom" secondItem="skH-oV-9aA" secondAttribute="bottom" constant="29" id="ZVs-kd-DOq"/>
-                                            <constraint firstItem="skH-oV-9aA" firstAttribute="top" secondItem="cES-NR-lbV" secondAttribute="top" constant="-13" id="wwH-10-TxQ"/>
-                                            <constraint firstAttribute="trailing" secondItem="skH-oV-9aA" secondAttribute="trailing" constant="8" id="zYL-IT-g8E"/>
-                                        </constraints>
                                     </view>
                                 </subviews>
                                 <constraints>
@@ -231,32 +228,20 @@ e.g., If calculated dose is 11ml, use 10ml instead.</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="9Yd-i6-nRY"/>
                     <value key="contentSizeForViewInPopover" type="size" width="365" height="667"/>
                     <connections>
+                        <outlet property="doseInfoTextArea" destination="RlU-va-bt3" id="QEO-cU-0fd"/>
                         <outlet property="doseTextField" destination="DSQ-jD-4VC" id="Fby-jS-JAv"/>
                         <outlet property="equationLabel" destination="d7C-vn-aSd" id="gKV-MC-lSd"/>
+                        <outlet property="formulaLabel" destination="HZM-NM-Yxt" id="ChI-ek-98q"/>
                         <outlet property="resultTextField" destination="aFa-fa-6lS" id="EkM-nI-rAz"/>
                         <outlet property="weightTextField" destination="wCn-dI-E6V" id="up4-dg-UlQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="116" y="31.03448275862069"/>
-        </scene>
-        <!--View Controller Deuce-->
-        <scene sceneID="Zkd-v0-7FY">
-            <objects>
-                <viewController id="xsh-E9-rEg" customClass="ViewControllerDeuce" customModule="Gadolinium" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="U8J-KS-Qef">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="ETJ-Pj-IY1"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="kDd-bx-g2L" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="841" y="40"/>
+            <point key="canvasLocation" x="1055.2" y="31.03448275862069"/>
         </scene>
     </scenes>
 </document>
