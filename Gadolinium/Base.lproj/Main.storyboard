@@ -77,13 +77,13 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="mmol/kg" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bpc-Rq-gde">
-                                                        <rect key="frame" x="35" y="0.0" width="0.0" height="50"/>
+                                                        <rect key="frame" x="35" y="0.0" width="66.5" height="50"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kLy-iL-r0A">
-                                                        <rect key="frame" x="35" y="0.0" width="160" height="50"/>
+                                                        <rect key="frame" x="101.5" y="0.0" width="93.5" height="50"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -137,27 +137,33 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rxW-pb-JeW">
-                                                        <rect key="frame" x="15" y="0.0" width="80" height="50"/>
+                                                        <rect key="frame" x="15" y="0.0" width="60" height="50"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" constant="80" id="E1Y-Lg-zDM"/>
+                                                            <constraint firstAttribute="width" constant="60" id="E1Y-Lg-zDM"/>
                                                         </constraints>
                                                         <state key="normal" title="kg">
+                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <color key="titleShadowColor" red="0.32398929360000001" green="0.54490013969999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="selectKgs:" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="Jeg-JP-qZS"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2CJ-Ut-mnP">
-                                                        <rect key="frame" x="95" y="0.0" width="80" height="50"/>
-                                                        <color key="backgroundColor" red="1" green="0.01379021354" blue="0.22765328830000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <rect key="frame" x="75" y="0.0" width="60" height="50"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" constant="80" id="Add-dN-TzH"/>
+                                                            <constraint firstAttribute="width" constant="60" id="Add-dN-TzH"/>
                                                         </constraints>
                                                         <state key="normal" title="lbs">
-                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                             <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="selectLbs:" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="2Sb-Dr-1KU"/>
+                                                        </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iI8-ZE-zUe">
-                                                        <rect key="frame" x="175" y="0.0" width="20" height="50"/>
+                                                        <rect key="frame" x="135" y="0.0" width="60" height="50"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -235,6 +241,8 @@ OK to round down to nearest vial size in many circumstances to save opening new 
                         <outlet property="doseTextField" destination="DSQ-jD-4VC" id="Fby-jS-JAv"/>
                         <outlet property="equationLabel" destination="d7C-vn-aSd" id="gKV-MC-lSd"/>
                         <outlet property="formulaLabel" destination="HZM-NM-Yxt" id="ChI-ek-98q"/>
+                        <outlet property="kgButton" destination="rxW-pb-JeW" id="RrU-sT-9Ac"/>
+                        <outlet property="lbsButton" destination="2CJ-Ut-mnP" id="3SD-FS-CmC"/>
                         <outlet property="resultTextField" destination="aFa-fa-6lS" id="EkM-nI-rAz"/>
                         <outlet property="weightTextField" destination="wCn-dI-E6V" id="up4-dg-UlQ"/>
                     </connections>
