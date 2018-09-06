@@ -13,6 +13,9 @@ class ViewController: UIViewController {
     //MARK: --Variables
     let toolBar = UIToolbar()
     
+    var metricWeightUnit: Double!
+    var concentration: Double!
+    
     //MARK: --IBOutputs
     @IBOutlet weak var weightTextField: UITextField!
     @IBOutlet weak var doseTextField: UITextField!
@@ -25,17 +28,17 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        // hardcode these until it is passed in from segue
+        doseTextField.text = ".1"
+        concentration = 0.5
        
+        // lets get started
         initializeToolbar()
-        toggleLabels(value: true)
-    }
-    
-    func toggleLabels(value: Bool) {
-        formulaLabel.isHidden = value
-        doseInfoTextArea.isHidden = value
-        formulaLabel.isHidden = value
-        setButtonColors(isLbsSelected: true)
+        hideLabels(value: true)
+        ensureButtonIsActivated()
+        setButtonColors()
+        setMetricWeightUnit()
+        setFormulaLabel()
     }
     
     override func didReceiveMemoryWarning() {
@@ -43,42 +46,31 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    //MARK: --IBActions
     @IBAction func selectLbs(_ sender: Any) {
-        setButtonColors(isLbsSelected: true)
+        lbsButton.isSelected = true
+        kgButton.isSelected = false
+        setButtonColors()
+        setMetricWeightUnit()
+        setFormulaLabel()
     }
     
     @IBAction func selectKgs(_ sender: Any) {
-        setButtonColors(isLbsSelected: false)
+        lbsButton.isSelected = false
+        kgButton.isSelected = true
+        setButtonColors()
+        setMetricWeightUnit()
+        setFormulaLabel()
     }
     
-    //MARK: --IBActions for Dose
     @IBAction func dostTextBegin(_ sender: Any) {
         toolBar.isHidden = false
     }
     
     @IBAction func doseTextExit(_ sender: Any) {
         toolBar.isHidden = true
-        
     }
     
-    @IBAction func doseTextChange(_ sender: Any) {
-        
-        toggleLabels(value: false)
-        
-        // get text field values
-        let dose: Double? = Double(doseTextField.text!) ?? 0
-        let weight: Double? = Double(weightTextField.text!) ?? 0
-        
-        // calculate
-        let result: Double = calculateDose( dose: dose!, weight: weight!)
-        
-        // populate labels with dose calculation
-        populateLabels(dose: dose!, weight: weight!, result: result)
-        
-        // only display toolbar if valid input
-    }
-    
-    //MARK: --IBActions for Weight
     @IBAction func weightTextBegin(_ sender: Any) {
         toolBar.isHidden = false
     }
@@ -87,32 +79,126 @@ class ViewController: UIViewController {
         toolBar.isHidden = true
     }
     
-    @IBAction func weightTextChange(_ sender: Any) {
+    @objc func formSubmit () {
         
-        toggleLabels(value: false)
+        setMetricWeightUnit()
+        displayResult()
+        hideLabels(value: false)
         
+        setFormulaLabel()
         
-        // get text field values
-        let dose: Double? = Double(doseTextField.text!) ?? 0
-        let weight: Double? = Double(weightTextField.text!) ?? 0
-        
-        // calculate
-        let result: Double = calculateDose( dose: dose!, weight: weight!)
-        
-        // populate labels with dose calculation
-        populateLabels(dose: dose!, weight: weight!, result: result)
     }
     
-    //MARK: --Functions & Helper Methods
+    func displayResult() {
+        var dose: Double? = getDose()
+        var weight: Double? = getWeight()
+        var result = (dose! * weight!) / concentration
+        
+        resultTextField.text = String(result)
+    }
+    
+    func getDose() -> Double {
+        let dose: Double? = Double(doseTextField.text!) ?? 0
+        return dose!
+    }
+    
+    func getWeight() -> Double {
+        let weight: Double? = Double(weightTextField.text!) ?? 0
+        return weight!
+    }
+    
+    func ensureButtonIsActivated() {
+        if !isLbsSelected() && !isKgSelected() {
+            lbsButton.isSelected = true
+        }
+    }
+    
+    func setMetricWeightUnit() {
+        metricWeightUnit = isLbsSelected() ? 1.0 : 0.453592
+    }
+    
+    func isLbsSelected() -> Bool {
+        return lbsButton.isSelected == true
+    }
+    
+    func isKgSelected() -> Bool {
+        return kgButton.isSelected == true
+    }
+    
+    func calculateDose() -> Double {
+        let dose = getDose()
+        let result : Double = dose * metricWeightUnit
+        return result
+    }
+    
+    func hideLabels(value: Bool) {
+        formulaLabel.isHidden = value
+        doseInfoTextArea.isHidden = value
+        formulaLabel.isHidden = value
+    }
+    
+    func setButtonColors() {
+        
+        if (isLbsSelected()) {
+            lbsButton.backgroundColor = hexStringToUIColor(hex: "FF043A")
+            lbsButton.setTitleColor(UIColor.white, for: .normal)
+            
+            kgButton.backgroundColor = UIColor.white
+            kgButton.setTitleColor(UIColor.black, for: .normal)
+        } else {
+            kgButton.backgroundColor = hexStringToUIColor(hex: "FF043A")
+            kgButton.setTitleColor(UIColor.white, for: .normal)
+            
+            lbsButton.backgroundColor = UIColor.white
+            lbsButton.setTitleColor(UIColor.black, for: .normal)
+        }
+        
+    }
+    
+    func setFormulaLabel() {
+//        formulaLabel.text = "(" + contrastAgent! + "mmol/kg * " + weightString + "kg) / 0.50 mmol/ml"
+    }
+    
+    //MARK: --Useful Functions & Helper Methods found from the web
+    func hexStringToUIColor (hex:String) -> UIColor {
+        var cString:String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
+        
+        if (cString.hasPrefix("#")) {
+            cString.remove(at: cString.startIndex)
+        }
+        
+        if ((cString.count) != 6) {
+            return UIColor.gray
+        }
+        
+        var rgbValue:UInt32 = 0
+        Scanner(string: cString).scanHexInt32(&rgbValue)
+        
+        return UIColor(
+            red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
+            green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
+            blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
+            alpha: CGFloat(1.0)
+        )
+    }
+    
     func initializeToolbar() {
+        
         print(UIApplication.shared.statusBarFrame.height)//44 for iPhone x, 20 for other iPhones
         navigationController?.navigationBar.barTintColor = .red
         
         
         var items = [UIBarButtonItem]()
+        
         items.append(
-            UIBarButtonItem(barButtonSystemItem: .save, target: nil, action: nil)
-        )
+            UIBarButtonItem(barButtonSystemItem: .cancel, target: nil, action: nil))
+        
+        items.append(
+            UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil))
+        
+        let calculateButton = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(ViewController.formSubmit))
+        
+        items.append(calculateButton)
         
         toolBar.isHidden = true
         toolBar.setItems(items, animated: true)
@@ -136,70 +222,6 @@ class ViewController: UIViewController {
             
             toolBar.heightAnchor.constraint(equalToConstant: 44).isActive = true
         }
-
-    }
-    
-    func calculateDose(dose: Double, weight: Double) -> Double {
-        let result : Double = dose * weight
-        return result
-    }
-    
-    func populateLabels(dose: Double, weight: Double, result: Double) {
-        let doseText = String(dose)
-        let weightText = String(weight)
-        let resultText = String(result)
-        
-        resultTextField.text = resultText
-        equationLabel.text = "(" + doseText + " x " + weightText + ")"
-        
-    }
-    
-    func toggleToolbar(doseTextField: String, weightTextField: String) {
-        if (!doseTextField.isEmpty && !weightTextField.isEmpty) {
-            toolBar.isHidden = false
-        } else {
-            toolBar.isHidden = true
-        }
-    }
-    
-    func hexStringToUIColor (hex:String) -> UIColor {
-        var cString:String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
-        
-        if (cString.hasPrefix("#")) {
-            cString.remove(at: cString.startIndex)
-        }
-        
-        if ((cString.count) != 6) {
-            return UIColor.gray
-        }
-        
-        var rgbValue:UInt32 = 0
-        Scanner(string: cString).scanHexInt32(&rgbValue)
-        
-        return UIColor(
-            red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
-            green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
-            blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
-            alpha: CGFloat(1.0)
-        )
-    }
-    
-    func setButtonColors(isLbsSelected: Bool = true) {
-        
-        if (isLbsSelected) {
-            lbsButton.backgroundColor = hexStringToUIColor(hex: "FF043A")
-            lbsButton.setTitleColor(UIColor.white, for: .normal)
-            
-            kgButton.backgroundColor = UIColor.white
-            kgButton.setTitleColor(UIColor.black, for: .normal)
-        } else {
-            kgButton.backgroundColor = hexStringToUIColor(hex: "FF043A")
-            kgButton.setTitleColor(UIColor.white, for: .normal)
-            
-            lbsButton.backgroundColor = UIColor.white
-            lbsButton.setTitleColor(UIColor.black, for: .normal)
-        }
-        
     }
 }
 

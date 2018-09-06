@@ -59,7 +59,6 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                                                 <connections>
-                                                    <action selector="doseTextChange:" destination="BYZ-38-t0r" eventType="editingChanged" id="AYh-vo-I7C"/>
                                                     <action selector="doseTextExit:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="fAN-ht-Ulg"/>
                                                     <action selector="dostTextBegin:" destination="BYZ-38-t0r" eventType="editingDidBegin" id="iox-jg-c86"/>
                                                 </connections>
@@ -120,7 +119,6 @@
                                                 <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                                                 <connections>
                                                     <action selector="weightTextBegin:" destination="BYZ-38-t0r" eventType="editingDidBegin" id="bUp-Wv-lje"/>
-                                                    <action selector="weightTextChange:" destination="BYZ-38-t0r" eventType="editingChanged" id="rxB-CI-Tkc"/>
                                                     <action selector="weightTextExit:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="jRa-qG-Mzu"/>
                                                 </connections>
                                             </textField>
@@ -136,20 +134,19 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rxW-pb-JeW">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rxW-pb-JeW">
                                                         <rect key="frame" x="15" y="0.0" width="60" height="50"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="60" id="E1Y-Lg-zDM"/>
                                                         </constraints>
                                                         <state key="normal" title="kg">
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            <color key="titleShadowColor" red="0.32398929360000001" green="0.54490013969999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         </state>
                                                         <connections>
                                                             <action selector="selectKgs:" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="Jeg-JP-qZS"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2CJ-Ut-mnP">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2CJ-Ut-mnP">
                                                         <rect key="frame" x="75" y="0.0" width="60" height="50"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="60" id="Add-dN-TzH"/>
@@ -158,6 +155,11 @@
                                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                             <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                                         </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="weight">
+                                                                <integer key="value" value="1"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="selectLbs:" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="2Sb-Dr-1KU"/>
                                                         </connections>
@@ -205,12 +207,12 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RlU-va-bt3">
                                                 <rect key="frame" x="18" y="0.0" width="341" height="185"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <mutableString key="text">Recommended Rounding to the nearest ml, except for children*
+                                                <string key="text">Recommended Rounding to the nearest ml, except for children*
         
 12.4 ml should be 12ml 13.9 ml should be 14mldose
 * but 1.2 ml should be 1.2ml
         
-OK to round down to nearest vial size in many circumstances to save opening new vial e.g., if calculated dose is 11ml, use 10ml instead</mutableString>
+OK to round down to nearest vial size in many circumstances to save opening new vial e.g., if calculated dose is 11ml, use 10ml instead</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
