@@ -35,9 +35,9 @@ class ViewController: UIViewController {
         // lets get started
         initializeToolbar()
         hideLabels(value: true)
-        ensureButtonIsActivated()
+        selectWeightUnit()
+        setWeightUnit()
         setButtonColors()
-        setMetricWeightUnit()
         setFormulaLabel()
     }
     
@@ -51,7 +51,7 @@ class ViewController: UIViewController {
         lbsButton.isSelected = true
         kgButton.isSelected = false
         setButtonColors()
-        setMetricWeightUnit()
+        setWeightUnit()
         setFormulaLabel()
     }
     
@@ -59,7 +59,7 @@ class ViewController: UIViewController {
         lbsButton.isSelected = false
         kgButton.isSelected = true
         setButtonColors()
-        setMetricWeightUnit()
+        setWeightUnit()
         setFormulaLabel()
     }
     
@@ -80,19 +80,22 @@ class ViewController: UIViewController {
     }
     
     @objc func formSubmit () {
+        let dose: Double? = getDose()
+        let weight: Double? = getWeight()
         
-        setMetricWeightUnit()
-        displayResult()
+        setWeightUnit()
+        displayResult(dose: dose!, weight: weight!)
+        showFormula(dose: dose!, weight: weight!)
         hideLabels(value: false)
-        
         setFormulaLabel()
-        
     }
     
-    func displayResult() {
-        var dose: Double? = getDose()
-        var weight: Double? = getWeight()
-        var result = (dose! * weight!) / concentration
+    func showFormula(dose: Double, weight: Double) {
+        equationLabel.text = String(dose) + "mmol/kg x " + String(weight)
+    }
+    
+    func displayResult(dose: Double, weight: Double) {
+        let result = (dose * weight) / concentration
         
         resultTextField.text = String(result)
     }
@@ -107,13 +110,13 @@ class ViewController: UIViewController {
         return weight!
     }
     
-    func ensureButtonIsActivated() {
+    func selectWeightUnit() {
         if !isLbsSelected() && !isKgSelected() {
             lbsButton.isSelected = true
         }
     }
     
-    func setMetricWeightUnit() {
+    func setWeightUnit() {
         metricWeightUnit = isLbsSelected() ? 1.0 : 0.453592
     }
     
