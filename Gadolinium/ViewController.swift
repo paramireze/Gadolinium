@@ -110,7 +110,7 @@ class ViewController: UIViewController {
         let weightText = String(getWeightMultipliedByWeightUnit())
         let concentrationText = String(concentration)
         
-        equationLabel.text = "(" + doseText + "mmol/kg * " + weightText + " kgs) / " + concentrationText + " mmol/ml"
+        equationLabel.text = "(" + doseText + " mmol/kg * " + weightText + " kgs) / " + concentrationText + " mmol/ml"
     }
     
     func hideLabels(value: Bool) {

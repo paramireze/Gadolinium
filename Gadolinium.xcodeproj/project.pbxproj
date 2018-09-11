@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1026BB812147754900860B01 /* ContrastAgentsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1026BB802147754900860B01 /* ContrastAgentsTableView.swift */; };
+		1026BB832147F1D700860B01 /* ContrastAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1026BB822147F1D700860B01 /* ContrastAgent.swift */; };
 		102FF4EA2125A09900CEFD3F /* ViewControllerDeuce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102FF4E92125A09900CEFD3F /* ViewControllerDeuce.swift */; };
 		107ECA16210DEAF100250945 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107ECA15210DEAF100250945 /* AppDelegate.swift */; };
 		107ECA18210DEAF100250945 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107ECA17210DEAF100250945 /* ViewController.swift */; };
@@ -15,6 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1026BB802147754900860B01 /* ContrastAgentsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContrastAgentsTableView.swift; sourceTree = "<group>"; };
+		1026BB822147F1D700860B01 /* ContrastAgent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContrastAgent.swift; sourceTree = "<group>"; };
 		102FF4E92125A09900CEFD3F /* ViewControllerDeuce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerDeuce.swift; sourceTree = "<group>"; };
 		107ECA12210DEAF100250945 /* Gadolinium.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gadolinium.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		107ECA15210DEAF100250945 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -60,6 +64,8 @@
 				107ECA1C210DEAF400250945 /* Assets.xcassets */,
 				107ECA21210DEAF400250945 /* Info.plist */,
 				102FF4E92125A09900CEFD3F /* ViewControllerDeuce.swift */,
+				1026BB802147754900860B01 /* ContrastAgentsTableView.swift */,
+				1026BB822147F1D700860B01 /* ContrastAgent.swift */,
 			);
 			path = Gadolinium;
 			sourceTree = "<group>";
@@ -134,9 +140,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1026BB832147F1D700860B01 /* ContrastAgent.swift in Sources */,
 				102FF4EA2125A09900CEFD3F /* ViewControllerDeuce.swift in Sources */,
 				107ECA18210DEAF100250945 /* ViewController.swift in Sources */,
 				107ECA16210DEAF100250945 /* AppDelegate.swift in Sources */,
+				1026BB812147754900860B01 /* ContrastAgentsTableView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
