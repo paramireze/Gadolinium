@@ -13,7 +13,8 @@ class ViewController: UIViewController {
     //MARK: --Variables
     let toolBar = UIToolbar()
     
-    var metricWeightUnit: Double!
+    
+    var weightUnitConversion: Double!
     var concentration: Double!
     
     //MARK: --IBOutputs
@@ -26,33 +27,12 @@ class ViewController: UIViewController {
     @IBOutlet weak var lbsButton: UIButton!
     @IBOutlet weak var kgButton: UIButton!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // hardcode these until it is passed in from segue
-        doseTextField.text = ".1"
-        concentration = 0.5
-       
-        // lets get started
-        initializeToolbar()
-        hideLabels(value: true)
-        selectWeightUnit()
-        setWeightUnit()
-        setButtonColors()
-        setFormulaLabel()
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
     //MARK: --IBActions
     @IBAction func selectLbs(_ sender: Any) {
         lbsButton.isSelected = true
         kgButton.isSelected = false
         setButtonColors()
         setWeightUnit()
-        setFormulaLabel()
     }
     
     @IBAction func selectKgs(_ sender: Any) {
@@ -60,7 +40,6 @@ class ViewController: UIViewController {
         kgButton.isSelected = true
         setButtonColors()
         setWeightUnit()
-        setFormulaLabel()
     }
     
     @IBAction func dostTextBegin(_ sender: Any) {
@@ -79,6 +58,25 @@ class ViewController: UIViewController {
         toolBar.isHidden = true
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // hardcode these until it is passed in from segue
+        doseTextField.text = "0.10"
+        concentration = 0.50
+       
+        // lets get started
+        initializeToolbar()
+        hideLabels(value: true)
+        selectWeightUnit()
+        setWeightUnit()
+        setButtonColors()
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
     @objc func formSubmit () {
         let dose: Double? = getDose()
         let weight: Double? = getWeight()
@@ -87,19 +85,39 @@ class ViewController: UIViewController {
         displayResult(dose: dose!, weight: weight!)
         showFormula(dose: dose!, weight: weight!)
         hideLabels(value: false)
-        setFormulaLabel()
     }
     
-    func showFormula(dose: Double, weight: Double) {
-        equationLabel.text = String(dose) + "mmol/kg x " + String(weight)
+    func setWeightUnit() {
+        weightUnitConversion = isLbsSelected() ? 0.453592 : 1.0
+    }
+    
+    func getWeightMultipliedByWeightUnit() -> Double {
+        let weight: Double? = getWeight()
+        let result = weight! * weightUnitConversion!
+        return round(result * 100) / 100
     }
     
     func displayResult(dose: Double, weight: Double) {
-        let result = (dose * weight) / concentration
         
-        resultTextField.text = String(result)
+        let result = round(dose * (weight * weightUnitConversion) / concentration)
+        
+        resultTextField.text = String(result) + " ml"
     }
     
+    func showFormula(dose: Double, weight: Double) {
+        
+        let doseText = String(dose)
+        let weightText = String(getWeightMultipliedByWeightUnit())
+        let concentrationText = String(concentration)
+        
+        equationLabel.text = "(" + doseText + "mmol/kg * " + weightText + " kgs) / " + concentrationText + " mmol/ml"
+    }
+    
+    func hideLabels(value: Bool) {
+        formulaLabel.isHidden = value
+        doseInfoTextArea.isHidden = value
+    }
+
     func getDose() -> Double {
         let dose: Double? = Double(doseTextField.text!) ?? 0
         return dose!
@@ -116,10 +134,6 @@ class ViewController: UIViewController {
         }
     }
     
-    func setWeightUnit() {
-        metricWeightUnit = isLbsSelected() ? 1.0 : 0.453592
-    }
-    
     func isLbsSelected() -> Bool {
         return lbsButton.isSelected == true
     }
@@ -130,14 +144,8 @@ class ViewController: UIViewController {
     
     func calculateDose() -> Double {
         let dose = getDose()
-        let result : Double = dose * metricWeightUnit
+        let result : Double = dose * weightUnitConversion
         return result
-    }
-    
-    func hideLabels(value: Bool) {
-        formulaLabel.isHidden = value
-        doseInfoTextArea.isHidden = value
-        formulaLabel.isHidden = value
     }
     
     func setButtonColors() {
@@ -148,6 +156,7 @@ class ViewController: UIViewController {
             
             kgButton.backgroundColor = UIColor.white
             kgButton.setTitleColor(UIColor.black, for: .normal)
+            
         } else {
             kgButton.backgroundColor = hexStringToUIColor(hex: "FF043A")
             kgButton.setTitleColor(UIColor.white, for: .normal)
@@ -155,11 +164,6 @@ class ViewController: UIViewController {
             lbsButton.backgroundColor = UIColor.white
             lbsButton.setTitleColor(UIColor.black, for: .normal)
         }
-        
-    }
-    
-    func setFormulaLabel() {
-//        formulaLabel.text = "(" + contrastAgent! + "mmol/kg * " + weightString + "kg) / 0.50 mmol/ml"
     }
     
     //MARK: --Useful Functions & Helper Methods found from the web
