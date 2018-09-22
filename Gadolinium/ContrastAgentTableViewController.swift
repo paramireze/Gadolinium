@@ -39,7 +39,8 @@ class ContrastAgentTableViewController: UITableViewController {
         let asdf =  contrastAgents[indexPath.row]
         
         cell.contrastAgentNameLabel.text = asdf.name
-        
+        cell.contrastAgentDoseLabel.text = "Dose: " + asdf.dose + " mmol/kg"
+        cell.contrastAgentConcentrationLabel.text = "Conc: " +  asdf.concentration + " M"
         
         // Return the configured cell
         return cell
@@ -47,11 +48,11 @@ class ContrastAgentTableViewController: UITableViewController {
 
     private func loadContrastAgents() {
         
-        guard let contrastAgent1 = ContrastAgent(name: "contrast agent numeral uno", dose: "0.2", concentration: "04", packageInsert: "asdf") else {
+        guard let contrastAgent1 = ContrastAgent(name: "Contrast Agent Numeral Uno", dose: "0.2", concentration: "0.4", packageInsert: "asdf") else {
             fatalError("Unable to instantiate meal1")
         }
         
-        guard let contrastAgent2 = ContrastAgent(name: "contrast agent numeral dose", dose: "0.3", concentration: "03", packageInsert: "fdsa") else {
+        guard let contrastAgent2 = ContrastAgent(name: "Contrast Agent Numeral Dose", dose: "0.3", concentration: "0.5", packageInsert: "fdsa") else {
             fatalError("Unable to instantiate meal1")
         }
         

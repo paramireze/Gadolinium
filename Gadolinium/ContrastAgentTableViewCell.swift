@@ -3,6 +3,9 @@ import UIKit
 class ContrastAgentTableViewCell: UITableViewCell {
     
     @IBOutlet weak var contrastAgentNameLabel: UILabel!
+    @IBOutlet weak var contrastAgentConcentrationLabel: UILabel!
+    @IBOutlet weak var contrastAgentDoseLabel: UILabel!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
