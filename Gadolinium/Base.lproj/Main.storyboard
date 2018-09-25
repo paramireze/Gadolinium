@@ -54,6 +54,7 @@
                                     <outlet property="contrastAgentConcentrationLabel" destination="eaB-rL-t28" id="psL-h5-4CW"/>
                                     <outlet property="contrastAgentDoseLabel" destination="Oda-uN-XaB" id="sa6-9l-z37"/>
                                     <outlet property="contrastAgentNameLabel" destination="vDI-xO-gwY" id="7dS-5S-P8p"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="vJR-A8-Sss"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -63,13 +64,10 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Contrast Agents" id="w9Z-5J-lxG"/>
-                    <connections>
-                        <segue destination="BYZ-38-t0r" kind="show" id="Anp-Pz-xBa"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nFP-yh-Lug" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1263.2" y="30.134932533733135"/>
+            <point key="canvasLocation" x="1718" y="29"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -296,7 +294,9 @@ OK to round down to nearest vial size in many circumstances to save opening new 
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="9Yd-i6-nRY"/>
+                    <navigationItem key="navigationItem" id="9Yd-i6-nRY">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="fbg-nD-gaF"/>
+                    </navigationItem>
                     <value key="contentSizeForViewInPopover" type="size" width="365" height="667"/>
                     <connections>
                         <outlet property="doseInfoTextArea" destination="RlU-va-bt3" id="QEO-cU-0fd"/>
@@ -311,7 +311,7 @@ OK to round down to nearest vial size in many circumstances to save opening new 
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2201" y="30"/>
+            <point key="canvasLocation" x="3321" y="50"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Qu1-WJ-OOA">
@@ -332,25 +332,25 @@ OK to round down to nearest vial size in many circumstances to save opening new 
             <point key="canvasLocation" x="324" y="30.134932533733135"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="nF9-z9-ozj">
+        <scene sceneID="4Bc-PY-3qo">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0OJ-CC-cxS" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="E6Q-in-woa" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="gFK-mi-czJ">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="lZF-jF-iQG">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="x7t-CY-2ub"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="dhT-Xl-ikb"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wvM-a4-wyZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xjb-QB-8db" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2201" y="-752"/>
+            <point key="canvasLocation" x="2537" y="807"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Anp-Pz-xBa"/>
+        <segue reference="dhT-Xl-ikb"/>
     </inferredMetricsTieBreakers>
 </document>

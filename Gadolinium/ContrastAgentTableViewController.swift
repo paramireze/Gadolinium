@@ -45,7 +45,14 @@ class ContrastAgentTableViewController: UITableViewController {
         // Return the configured cell
         return cell
     }
-
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        
+    }
+    
+    
     private func loadContrastAgents() {
         
         guard let contrastAgent1 = ContrastAgent(name: "Contrast Agent Numeral Uno", dose: "0.2", concentration: "0.4", packageInsert: "asdf") else {
