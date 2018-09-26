@@ -80,7 +80,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="zEF-pg-BCO">
                                 <rect key="frame" x="0.0" y="84" width="375" height="614"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contrast Agent Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="odU-RH-mok">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="odU-RH-mok">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
                                         <accessibility key="accessibilityConfiguration" identifier="Contrast Agent Name "/>
                                         <constraints>
@@ -299,6 +299,7 @@ OK to round down to nearest vial size in many circumstances to save opening new 
                     </navigationItem>
                     <value key="contentSizeForViewInPopover" type="size" width="365" height="667"/>
                     <connections>
+                        <outlet property="contrastAgentNameLabel" destination="odU-RH-mok" id="1be-iW-8oT"/>
                         <outlet property="doseInfoTextArea" destination="RlU-va-bt3" id="QEO-cU-0fd"/>
                         <outlet property="doseTextField" destination="DSQ-jD-4VC" id="Fby-jS-JAv"/>
                         <outlet property="equationLabel" destination="d7C-vn-aSd" id="gKV-MC-lSd"/>
@@ -351,6 +352,6 @@ OK to round down to nearest vial size in many circumstances to save opening new 
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="dhT-Xl-ikb"/>
+        <segue reference="vJR-A8-Sss"/>
     </inferredMetricsTieBreakers>
 </document>

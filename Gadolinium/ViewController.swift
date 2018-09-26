@@ -13,11 +13,11 @@ class ViewController: UIViewController {
     //MARK: --Variables
     let toolBar = UIToolbar()
     
-    
     var weightUnitConversion: Double!
     var concentration: Double!
     
     //MARK: --IBOutputs
+    @IBOutlet weak var contrastAgentNameLabel: UILabel!
     @IBOutlet weak var weightTextField: UITextField!
     @IBOutlet weak var doseTextField: UITextField!
     @IBOutlet weak var resultTextField: UILabel!
@@ -26,6 +26,15 @@ class ViewController: UIViewController {
     @IBOutlet weak var formulaLabel: UILabel!
     @IBOutlet weak var lbsButton: UIButton!
     @IBOutlet weak var kgButton: UIButton!
+    
+    
+    var contrastAgent: ContrastAgent?
+
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for:segue, sender: sender)
+       
+    }
     
     //MARK: --IBActions
     @IBAction func selectLbs(_ sender: Any) {
@@ -60,10 +69,13 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // hardcode these until it is passed in from segue
-        doseTextField.text = "0.10"
-        concentration = 0.50
-       
+        
+        if let contrastAgent = contrastAgent {
+            contrastAgentNameLabel.text = contrastAgent.name
+            doseTextField.text = contrastAgent.dose
+            concentration = Double(contrastAgent.concentration)
+        }
+        
         // lets get started
         initializeToolbar()
         hideLabels(value: true)

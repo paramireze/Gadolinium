@@ -49,7 +49,20 @@ class ContrastAgentTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         
+        guard let contrastAgentViewController = segue.destination as? ViewController else {
+            fatalError("Unexpected Destination: \(segue.destination)")
+        }
         
+        guard let selectedContrastAgentCell = sender as? ContrastAgentTableViewCell else {
+            fatalError("Unexpected sender: \(sender)")
+        }
+        
+        guard let indexPath = tableView.indexPath(for: selectedContrastAgentCell) else {
+            fatalError("The selected cell is not being displayed by the table")
+        }
+        
+        let selectedContrastAgent = contrastAgents[indexPath.row]
+        contrastAgentViewController.contrastAgent = selectedContrastAgent
     }
     
     
