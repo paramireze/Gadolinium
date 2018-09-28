@@ -68,14 +68,115 @@ class ContrastAgentTableViewController: UITableViewController {
     
     private func loadContrastAgents() {
         
-        guard let contrastAgent1 = ContrastAgent(name: "Contrast Agent Numeral Uno", dose: "0.2", concentration: "0.4", packageInsert: "asdf") else {
-            fatalError("Unable to instantiate meal1")
+        guard let gadobenateDimeglumine = ContrastAgent(
+            name: "gadobenate dimeglumine (MultiHance)",
+            concentration: "0.5",
+            concentrationUnit: "M",
+            dose: "0.1",
+            doseUnit: "MMOL/KG",
+            notes: "-",
+            packageInsert: "https://medlibrary.org/lib/rx/meds/multihance-1/") else {
+                fatalError("Failed To Load ")
         }
         
-        guard let contrastAgent2 = ContrastAgent(name: "Contrast Agent Numeral Dose", dose: "0.3", concentration: "0.5", packageInsert: "fdsa") else {
-            fatalError("Unable to instantiate meal1")
+        guard let gadoxecticAcid = ContrastAgent(
+            name: "Gadoxectic Acid (Eovist)",
+            concentration: "0.25",
+            concentrationUnit: "M",
+            dose: "0.25",
+            doseUnit: "MMOL/KG",
+            notes: "UW standard dose differs from package insert. Eovist dose at UW is 2x package insert, and is an off-label dose.",
+            packageInsert: "https://medlibrary.org/lib/rx/meds/eovist/") else {
+                fatalError("")
         }
         
-        contrastAgents += [contrastAgent1, contrastAgent2]
+        guard let gadofosvesetTrisodium = ContrastAgent(
+            name: "gadofosveset trisodium (Ablavar)",
+            concentration: "0.25",
+            concentrationUnit: "M",
+            dose: "0.03",
+            doseUnit: "MMOL/KG",
+            notes: "-",
+            packageInsert: "https://medlibrary.org/lib/rx/meds/ablavar/") else {
+                fatalError("")
+        }
+
+        guard let gadoterateMeglumine = ContrastAgent(
+            name: "gadoterate meglumine (Dotarem)",
+            concentration: "0.5",
+            concentrationUnit: "M",
+            dose: "0.1",
+            doseUnit: "MMOL/KG",
+            notes: "-",
+            packageInsert: "https://medlibrary.org/lib/rx/meds/dotarem/") else {
+                fatalError("")
+        }
+ 
+        guard let gadoteridol = ContrastAgent(
+            name: "gadoteridol (Prohance)",
+            concentration: "0.5",
+            concentrationUnit: "M",
+            dose: "0.1",
+            doseUnit: "MMOL/KG",
+            notes: "-",
+            packageInsert: "https://medlibrary.org/lib/rx/meds/prohance-1/") else {
+                fatalError("")
+        }
+        
+        guard let gadopentatateDimeglumine = ContrastAgent(
+            name: "gadopentatate dimeglumine (Magnevist)",
+            concentration: "0.5",
+            concentrationUnit: "M",
+            dose: "0.1",
+            doseUnit: "MMOL/KG",
+            notes: "-",
+            packageInsert: "https://medlibrary.org/lib/rx/meds/magnevist-1/") else {
+            fatalError("")
+        }
+        
+        guard let gadodiamide = ContrastAgent(
+            name: "gadodiamide (Omniscan)",
+            concentration: "0.5",
+            concentrationUnit: "M",
+            dose: "0.1",
+            doseUnit: "MMOL/KG",
+            notes: "-",
+            packageInsert: "https://medlibrary.org/lib/rx/meds/omniscan/") else {
+                fatalError("")
+        }
+ 
+        guard let gadoversetamide = ContrastAgent(
+            name: "gadoversetamide (Optimark)",
+            concentration: "0.5",
+            concentrationUnit: "M",
+            dose: "0.1",
+            doseUnit: "MMOL/KG",
+            notes: "-",
+            packageInsert: "https://medlibrary.org/lib/rx/meds/optimark-1/") else {
+                fatalError("")
+        }
+        
+        guard let gadobutrol = ContrastAgent(
+            name: "gadobutrol (Gadavist)",
+            concentration: "1",
+            concentrationUnit: "M",
+            dose: "0.1",
+            doseUnit: "MMOL/KG",
+            notes: "-",
+            packageInsert: "https://medlibrary.org/lib/rx/meds/gadavist-1/") else {
+                fatalError("")
+        }
+        
+        guard let ferumoxytol = ContrastAgent(
+            name: "ferumoxytol (Feraheme)",
+            concentration: "30",
+            concentrationUnit: "mg/ml",
+            dose: "3",
+            doseUnit: "mg/kg",
+            notes: "The use of ferumoxytol for MRI is an off-label use of this agent. The standard dose at UW for this off-label application is 3.0 mg/kg.",
+            packageInsert: "https://medlibrary.org/lib/rx/meds/feraheme-1/") else {
+                fatalError("")
+        }
+        contrastAgents += [gadobenateDimeglumine, gadoxecticAcid, gadofosvesetTrisodium, gadoterateMeglumine, gadoteridol, gadopentatateDimeglumine, gadodiamide, gadoversetamide, gadobutrol, ferumoxytol]
     }
 }
