@@ -36,11 +36,11 @@ class ContrastAgentTableViewController: UITableViewController {
         }
         // Depending on the section, fill the textLabel with the relevant text
        
-        let asdf =  contrastAgents[indexPath.row]
+        let contrastAgent =  contrastAgents[indexPath.row]
         
-        cell.contrastAgentNameLabel.text = asdf.name
-        cell.contrastAgentDoseLabel.text = "Dose: " + asdf.dose + " mmol/kg"
-        cell.contrastAgentConcentrationLabel.text = "Conc: " +  asdf.concentration + " M"
+        cell.contrastAgentNameLabel.text = contrastAgent.name
+        cell.contrastAgentDoseLabel.text = "Dose: " + contrastAgent.dose + " " + contrastAgent.doseUnit
+        cell.contrastAgentConcentrationLabel.text = "Conc: " +  contrastAgent.concentration + " " + contrastAgent.concentrationUnit
         
         // Return the configured cell
         return cell
@@ -73,7 +73,7 @@ class ContrastAgentTableViewController: UITableViewController {
             concentration: "0.5",
             concentrationUnit: "M",
             dose: "0.1",
-            doseUnit: "MMOL/KG",
+            doseUnit: "mmol/kg",
             notes: "-",
             packageInsert: "https://medlibrary.org/lib/rx/meds/multihance-1/") else {
                 fatalError("Failed To Load ")
@@ -84,7 +84,7 @@ class ContrastAgentTableViewController: UITableViewController {
             concentration: "0.25",
             concentrationUnit: "M",
             dose: "0.25",
-            doseUnit: "MMOL/KG",
+            doseUnit: "mmol/kg",
             notes: "UW standard dose differs from package insert. Eovist dose at UW is 2x package insert, and is an off-label dose.",
             packageInsert: "https://medlibrary.org/lib/rx/meds/eovist/") else {
                 fatalError("")
@@ -95,7 +95,7 @@ class ContrastAgentTableViewController: UITableViewController {
             concentration: "0.25",
             concentrationUnit: "M",
             dose: "0.03",
-            doseUnit: "MMOL/KG",
+            doseUnit: "mmol/kg",
             notes: "-",
             packageInsert: "https://medlibrary.org/lib/rx/meds/ablavar/") else {
                 fatalError("")
@@ -106,7 +106,7 @@ class ContrastAgentTableViewController: UITableViewController {
             concentration: "0.5",
             concentrationUnit: "M",
             dose: "0.1",
-            doseUnit: "MMOL/KG",
+            doseUnit: "mmol/kg",
             notes: "-",
             packageInsert: "https://medlibrary.org/lib/rx/meds/dotarem/") else {
                 fatalError("")
@@ -117,7 +117,7 @@ class ContrastAgentTableViewController: UITableViewController {
             concentration: "0.5",
             concentrationUnit: "M",
             dose: "0.1",
-            doseUnit: "MMOL/KG",
+            doseUnit: "mmol/kg",
             notes: "-",
             packageInsert: "https://medlibrary.org/lib/rx/meds/prohance-1/") else {
                 fatalError("")
@@ -128,7 +128,7 @@ class ContrastAgentTableViewController: UITableViewController {
             concentration: "0.5",
             concentrationUnit: "M",
             dose: "0.1",
-            doseUnit: "MMOL/KG",
+            doseUnit: "mmol/kg",
             notes: "-",
             packageInsert: "https://medlibrary.org/lib/rx/meds/magnevist-1/") else {
             fatalError("")
@@ -139,7 +139,7 @@ class ContrastAgentTableViewController: UITableViewController {
             concentration: "0.5",
             concentrationUnit: "M",
             dose: "0.1",
-            doseUnit: "MMOL/KG",
+            doseUnit: "mmol/kg",
             notes: "-",
             packageInsert: "https://medlibrary.org/lib/rx/meds/omniscan/") else {
                 fatalError("")
@@ -150,7 +150,7 @@ class ContrastAgentTableViewController: UITableViewController {
             concentration: "0.5",
             concentrationUnit: "M",
             dose: "0.1",
-            doseUnit: "MMOL/KG",
+            doseUnit: "mmol/kg",
             notes: "-",
             packageInsert: "https://medlibrary.org/lib/rx/meds/optimark-1/") else {
                 fatalError("")
@@ -161,7 +161,7 @@ class ContrastAgentTableViewController: UITableViewController {
             concentration: "1",
             concentrationUnit: "M",
             dose: "0.1",
-            doseUnit: "MMOL/KG",
+            doseUnit: "mmol/kg",
             notes: "-",
             packageInsert: "https://medlibrary.org/lib/rx/meds/gadavist-1/") else {
                 fatalError("")

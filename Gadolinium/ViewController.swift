@@ -17,6 +17,7 @@ class ViewController: UIViewController {
     var concentration: Double!
     
     //MARK: --IBOutputs
+    @IBOutlet weak var doseUnitLabel: UILabel!
     @IBOutlet weak var contrastAgentNameLabel: UILabel!
     @IBOutlet weak var weightTextField: UITextField!
     @IBOutlet weak var doseTextField: UITextField!
@@ -74,6 +75,7 @@ class ViewController: UIViewController {
             contrastAgentNameLabel.text = contrastAgent.name
             doseTextField.text = contrastAgent.dose
             concentration = Double(contrastAgent.concentration)
+            doseUnitLabel.text = contrastAgent.doseUnit
         }
         
         // lets get started
