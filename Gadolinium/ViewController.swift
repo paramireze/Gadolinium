@@ -167,14 +167,14 @@ class ViewController: UIViewController {
         if (isLbsSelected()) {
             lbsButton.backgroundColor = hexStringToUIColor(hex: "FF043A")
             lbsButton.setTitleColor(UIColor.white, for: .normal)
-            
+
             kgButton.backgroundColor = UIColor.white
             kgButton.setTitleColor(UIColor.black, for: .normal)
             
         } else {
             kgButton.backgroundColor = hexStringToUIColor(hex: "FF043A")
             kgButton.setTitleColor(UIColor.white, for: .normal)
-            
+
             lbsButton.backgroundColor = UIColor.white
             lbsButton.setTitleColor(UIColor.black, for: .normal)
         }
@@ -206,7 +206,7 @@ class ViewController: UIViewController {
     func initializeToolbar() {
         
         print(UIApplication.shared.statusBarFrame.height)//44 for iPhone x, 20 for other iPhones
-        navigationController?.navigationBar.barTintColor = .red
+        navigationController?.navigationBar.barTintColor = .white
         
         
         var items = [UIBarButtonItem]()
