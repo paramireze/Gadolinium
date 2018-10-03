@@ -71,6 +71,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         if let contrastAgent = contrastAgent {
             contrastAgentNameLabel.text = contrastAgent.name
             doseTextField.text = contrastAgent.dose
@@ -79,6 +80,7 @@ class ViewController: UIViewController {
         }
         
         // lets get started
+        addLogo()   
         initializeToolbar()
         hideLabels(value: true)
         selectWeightUnit()
@@ -101,6 +103,21 @@ class ViewController: UIViewController {
         hideLabels(value: false)
     }
     
+    func addLogo() {
+        let nav = self.navigationController?.navigationBar
+        
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        imageView.contentMode = .scaleAspectFit
+        
+        let image = UIImage(named: "Crest")?.withRenderingMode(.alwaysOriginal)
+        imageView.image = image
+        
+        let logo = UIBarButtonItem(image: image, style: UIBarButtonItemStyle.plain, target: self, action: nil)
+        
+        self.navigationItem.rightBarButtonItem = logo
+        
+    }
+    
     func setWeightUnit() {
         weightUnitConversion = isLbsSelected() ? 0.453592 : 1.0
     }
@@ -110,7 +127,7 @@ class ViewController: UIViewController {
         let result = weight! * weightUnitConversion!
         return round(result * 100) / 100
     }
-    
+
     func displayResult(dose: Double, weight: Double) {
         
         let result = round(dose * (weight * weightUnitConversion) / concentration)

@@ -7,6 +7,7 @@ class ContrastAgentTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        addLogo()   
         loadContrastAgents()
         tableView.rowHeight = 90
     }
@@ -178,5 +179,20 @@ class ContrastAgentTableViewController: UITableViewController {
                 fatalError("")
         }
         contrastAgents += [gadobenateDimeglumine, gadoxecticAcid, gadofosvesetTrisodium, gadoterateMeglumine, gadoteridol, gadopentatateDimeglumine, gadodiamide, gadoversetamide, gadobutrol, ferumoxytol]
+    }
+    
+    func addLogo() {
+        let nav = self.navigationController?.navigationBar
+        
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        imageView.contentMode = .scaleAspectFit
+        
+        let image = UIImage(named: "Crest")?.withRenderingMode(.alwaysOriginal)
+        imageView.image = image
+        
+        let logo = UIBarButtonItem(image: image, style: UIBarButtonItemStyle.plain, target: self, action: nil)
+        
+        self.navigationItem.rightBarButtonItem = logo
+        
     }
 }
