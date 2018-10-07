@@ -118,8 +118,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                                                 <connections>
-                                                    <action selector="doseTextExit:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="fAN-ht-Ulg"/>
-                                                    <action selector="dostTextBegin:" destination="BYZ-38-t0r" eventType="editingDidBegin" id="iox-jg-c86"/>
+                                                    <action selector="doseChangeEvent:" destination="BYZ-38-t0r" eventType="editingChanged" id="dFD-6Z-q5N"/>
                                                 </connections>
                                             </textField>
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iqp-k3-fN5">
@@ -177,8 +176,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                                                 <connections>
-                                                    <action selector="weightTextBegin:" destination="BYZ-38-t0r" eventType="editingDidBegin" id="bUp-Wv-lje"/>
-                                                    <action selector="weightTextExit:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="jRa-qG-Mzu"/>
+                                                    <action selector="weightChangeEvent:" destination="BYZ-38-t0r" eventType="editingChanged" id="3l3-nZ-rdm"/>
                                                 </connections>
                                             </textField>
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LkC-ef-YC3">

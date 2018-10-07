@@ -43,6 +43,7 @@ class ViewController: UIViewController {
         kgButton.isSelected = false
         setButtonColors()
         setWeightUnit()
+        formSubmit()
     }
     
     @IBAction func selectKgs(_ sender: Any) {
@@ -50,27 +51,18 @@ class ViewController: UIViewController {
         kgButton.isSelected = true
         setButtonColors()
         setWeightUnit()
+        formSubmit()
     }
     
-    @IBAction func dostTextBegin(_ sender: Any) {
-        toolBar.isHidden = false
+    @IBAction func doseChangeEvent(_ sender: Any) {
+        formSubmit()
     }
     
-    @IBAction func doseTextExit(_ sender: Any) {
-        toolBar.isHidden = true
+    @IBAction func weightChangeEvent(_ sender: Any) {
+        formSubmit()
     }
-    
-    @IBAction func weightTextBegin(_ sender: Any) {
-        toolBar.isHidden = false
-    }
-    
-    @IBAction func weightTextExit(_ sender: Any) {
-        toolBar.isHidden = true
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         
         if let contrastAgent = contrastAgent {
             contrastAgentNameLabel.text = contrastAgent.name
@@ -80,8 +72,7 @@ class ViewController: UIViewController {
         }
         
         // lets get started
-        addLogo()   
-        initializeToolbar()
+        addLogo()
         hideLabels(value: true)
         selectWeightUnit()
         setWeightUnit()
@@ -115,7 +106,6 @@ class ViewController: UIViewController {
         let logo = UIBarButtonItem(image: image, style: UIBarButtonItemStyle.plain, target: self, action: nil)
         
         self.navigationItem.rightBarButtonItem = logo
-        
     }
     
     func setWeightUnit() {
@@ -182,14 +172,14 @@ class ViewController: UIViewController {
     func setButtonColors() {
         
         if (isLbsSelected()) {
-            lbsButton.backgroundColor = hexStringToUIColor(hex: "FF043A")
+            lbsButton.backgroundColor = hexStringToUIColor(hex: "C5050C")
             lbsButton.setTitleColor(UIColor.white, for: .normal)
 
             kgButton.backgroundColor = UIColor.white
             kgButton.setTitleColor(UIColor.black, for: .normal)
             
         } else {
-            kgButton.backgroundColor = hexStringToUIColor(hex: "FF043A")
+            kgButton.backgroundColor = hexStringToUIColor(hex: "C5050C")
             kgButton.setTitleColor(UIColor.white, for: .normal)
 
             lbsButton.backgroundColor = UIColor.white
@@ -218,48 +208,6 @@ class ViewController: UIViewController {
             blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
             alpha: CGFloat(1.0)
         )
-    }
-    
-    func initializeToolbar() {
-        
-        print(UIApplication.shared.statusBarFrame.height)//44 for iPhone x, 20 for other iPhones
-        navigationController?.navigationBar.barTintColor = .white
-        
-        
-        var items = [UIBarButtonItem]()
-        
-        items.append(
-            UIBarButtonItem(barButtonSystemItem: .cancel, target: nil, action: nil))
-        
-        items.append(
-            UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil))
-        
-        let calculateButton = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(ViewController.formSubmit))
-        
-        items.append(calculateButton)
-        
-        toolBar.isHidden = true
-        toolBar.setItems(items, animated: true)
-        toolBar.tintColor = .red
-        view.addSubview(toolBar)
-        
-        toolBar.translatesAutoresizingMaskIntoConstraints = false
-        
-        if #available(iOS 11.0, *) {
-            let guide = self.view.safeAreaLayoutGuide
-            toolBar.trailingAnchor.constraint(equalTo: guide.trailingAnchor).isActive = true
-            toolBar.leadingAnchor.constraint(equalTo: guide.leadingAnchor).isActive = true
-            toolBar.bottomAnchor.constraint(equalTo: guide.bottomAnchor).isActive = true
-            toolBar.heightAnchor.constraint(equalToConstant: 44).isActive = true
-            
-        }
-        else {
-            NSLayoutConstraint(item: toolBar, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1.0, constant: 0).isActive = true
-            NSLayoutConstraint(item: toolBar, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1.0, constant: 0).isActive = true
-            NSLayoutConstraint(item: toolBar, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1.0, constant: 0).isActive = true
-            
-            toolBar.heightAnchor.constraint(equalToConstant: 44).isActive = true
-        }
     }
 }
 
