@@ -34,7 +34,6 @@ class ViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for:segue, sender: sender)
-       
     }
     
     //MARK: --IBActions
@@ -54,18 +53,36 @@ class ViewController: UIViewController {
         formSubmit()
     }
     
-    @IBAction func doseChangeEvent(_ sender: Any) {
+    @IBAction func dostTextBegin(_ sender: Any) {
+        // do stuff unless you don't want to
+    }
+    
+    @IBAction func doseTextExit(_ sender: Any) {
         formSubmit()
     }
     
-    @IBAction func weightChangeEvent(_ sender: Any) {
+    @IBAction func weightTextBegin(_ sender: Any) {
+        // do not do stuff
+    }
+    
+    @IBAction func weightTextExit(_ sender: Any) {
         formSubmit()
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:))))
+            resignFirstResponders()
         
         if let contrastAgent = contrastAgent {
-            contrastAgentNameLabel.text = contrastAgent.name
+            
+            var contrastAgentString = contrastAgent.name
+            
+            if (contrastAgent.notes != nil) {
+                contrastAgentString += "\n " + contrastAgent.notes!
+            }
+            
+            contrastAgentNameLabel.text = contrastAgentString
             doseTextField.text = contrastAgent.dose
             concentration = Double(contrastAgent.concentration)
             doseUnitLabel.text = contrastAgent.doseUnit
@@ -77,6 +94,8 @@ class ViewController: UIViewController {
         selectWeightUnit()
         setWeightUnit()
         setButtonColors()
+        lbsButton.layer.cornerRadius = 4
+        kgButton.layer.cornerRadius = 4
     }
     
     override func didReceiveMemoryWarning() {
@@ -84,16 +103,6 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    @objc func formSubmit () {
-        let dose: Double? = getDose()
-        let weight: Double? = getWeight()
-        
-        setWeightUnit()
-        displayResult(dose: dose!, weight: weight!)
-        showFormula(dose: dose!, weight: weight!)
-        hideLabels(value: false)
-    }
-    
     func addLogo() {
         let nav = self.navigationController?.navigationBar
         
@@ -106,6 +115,7 @@ class ViewController: UIViewController {
         let logo = UIBarButtonItem(image: image, style: UIBarButtonItemStyle.plain, target: self, action: nil)
         
         self.navigationItem.rightBarButtonItem = logo
+        
     }
     
     func setWeightUnit() {
@@ -134,9 +144,20 @@ class ViewController: UIViewController {
         equationLabel.text = "(" + doseText + " mmol/kg * " + weightText + " kgs) / " + concentrationText + " mmol/ml"
     }
     
+
     func hideLabels(value: Bool) {
         formulaLabel.isHidden = value
         doseInfoTextArea.isHidden = value
+        
+        if value {
+            resultTextField.text = ""
+            equationLabel.text = ""
+        }
+    }
+    
+    func resignFirstResponders() {
+        weightTextField.resignFirstResponder()
+        doseTextField.resignFirstResponder()
     }
 
     func getDose() -> Double {
@@ -161,12 +182,6 @@ class ViewController: UIViewController {
     
     func isKgSelected() -> Bool {
         return kgButton.isSelected == true
-    }
-    
-    func calculateDose() -> Double {
-        let dose = getDose()
-        let result : Double = dose * weightUnitConversion
-        return result
     }
     
     func setButtonColors() {
@@ -208,6 +223,44 @@ class ViewController: UIViewController {
             blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
             alpha: CGFloat(1.0)
         )
+    }
+    
+    @objc func formSubmit () {
+        let dose: Double? = getDose()
+        let weight: Double? = getWeight()
+        print(weight!)
+        
+        if (isInValidInput(input: weight!)) {
+            hideLabels(value: true)
+        } else {
+            setWeightUnit()
+            displayResult(dose: dose!, weight: weight!)
+            showFormula(dose: dose!, weight: weight!)
+            hideLabels(value: false)
+        }
+    
+    }
+    
+    func isInValidInput(input: Double) -> Bool {
+        var isInvalidInput = true
+        
+        if (input != 0) {
+            isInvalidInput = false
+        } else {
+            if (doseTextField.text != "" && weightTextField.text != "") {
+                alert(title: "Invalid Input", message: "Please use numbers or decimal points only")
+            }
+        }
+        
+        return isInvalidInput
+    }
+    
+    func alert(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message:
+            message, preferredStyle: UIAlertControllerStyle.alert)
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
+        
+        self.present(alertController, animated: true, completion: nil)
     }
 }
 

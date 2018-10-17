@@ -30,21 +30,21 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="125" translatesAutoresizingMaskIntoConstraints="NO" id="eaB-rL-t28">
                                             <rect key="frame" x="16" y="39" width="175" height="45"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" name="Georgia" family="Georgia" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oda-uN-XaB">
                                             <rect key="frame" x="199" y="39" width="169" height="45"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" name="Georgia" family="Georgia" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vDI-xO-gwY">
                                             <rect key="frame" x="16" y="11" width="345" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            <fontDescription key="fontDescription" name="Georgia-Bold" family="Georgia" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -105,20 +105,21 @@
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="90" id="s9s-Rm-R8h"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <fontDescription key="fontDescription" name="Georgia" family="Georgia" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DSQ-jD-4VC">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="DSQ-jD-4VC">
                                                 <rect key="frame" x="90" y="0.0" width="90" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="90" id="p0X-sb-Ctv"/>
                                                 </constraints>
                                                 <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
+                                                <fontDescription key="fontDescription" name="Georgia" family="Georgia" pointSize="17"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="decimalPad" returnKeyType="done"/>
                                                 <connections>
-                                                    <action selector="doseChangeEvent:" destination="BYZ-38-t0r" eventType="editingChanged" id="dFD-6Z-q5N"/>
+                                                    <action selector="doseTextExit:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="fAN-ht-Ulg"/>
+                                                    <action selector="dostTextBegin:" destination="BYZ-38-t0r" eventType="editingDidBegin" id="iox-jg-c86"/>
                                                 </connections>
                                             </textField>
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iqp-k3-fN5">
@@ -163,20 +164,21 @@
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="90" id="C9a-WW-MXh"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <fontDescription key="fontDescription" name="Georgia" family="Georgia" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wCn-dI-E6V">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="wCn-dI-E6V">
                                                 <rect key="frame" x="90" y="0.0" width="90" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="90" id="KH5-ih-asH"/>
                                                 </constraints>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="decimalPad" keyboardAppearance="light" returnKeyType="done"/>
                                                 <connections>
-                                                    <action selector="weightChangeEvent:" destination="BYZ-38-t0r" eventType="editingChanged" id="3l3-nZ-rdm"/>
+                                                    <action selector="weightTextBegin:" destination="BYZ-38-t0r" eventType="editingDidBegin" id="bUp-Wv-lje"/>
+                                                    <action selector="weightTextExit:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="jRa-qG-Mzu"/>
                                                 </connections>
                                             </textField>
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LkC-ef-YC3">
@@ -196,9 +198,7 @@
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="60" id="E1Y-Lg-zDM"/>
                                                         </constraints>
-                                                        <state key="normal" title="kg">
-                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </state>
+                                                        <state key="normal" title="kg"/>
                                                         <connections>
                                                             <action selector="selectKgs:" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="Jeg-JP-qZS"/>
                                                         </connections>
@@ -208,10 +208,7 @@
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="60" id="Add-dN-TzH"/>
                                                         </constraints>
-                                                        <state key="normal" title="lbs">
-                                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                            <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                                        </state>
+                                                        <state key="normal" title="lbs"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="weight">
                                                                 <integer key="value" value="1"/>
@@ -270,7 +267,7 @@
 * but 1.2 ml should be 1.2ml
         
 OK to round down to nearest vial size in many circumstances to save opening new vial e.g., if calculated dose is 11ml, use 10ml instead</string>
-                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <fontDescription key="fontDescription" name="Georgia" family="Georgia" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>

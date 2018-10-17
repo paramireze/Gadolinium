@@ -8,8 +8,24 @@ class ContrastAgentTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         addLogo()   
-        loadContrastAgents()
+        loadDefaultContrastAgents()
         tableView.rowHeight = 90
+        showDisclaimer()
+        
+    }
+    
+    func showDisclaimer() {
+        let title = "Disclaimer"
+        let message = "The results obtained with the Gadolinium Dose Calculator are intended to serve solely as guidelines for physicians and MRI technicians and should be considered as indicative only. The use of the calculator should not in any way substitute for the evaluation of a qualified physician. radiology.wisc.edu and/or the Board of Regents of the University of Wisconsin System, its officers, employees, and agents cannot be held responsible for the reliability of any results provided by the use of the calculator. The calculator may give inaccurate results due to the insertion of inaccurate data by the user, by a technical error within the application at the moment of calculation, or other unforeseen circumstances."
+        
+        alert(title: title, message: message)
+    }
+    
+    func alert(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
+        
+        self.present(alertController, animated: true, completion: nil)
     }
     
     override func didReceiveMemoryWarning() {
@@ -33,10 +49,9 @@ class ContrastAgentTableViewController: UITableViewController {
         let cellIdentifier = "ContrastAgentTableViewCell"
     
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ContrastAgentTableViewCell  else {
-            fatalError("The dequeued cell is not an instance of MealTableViewCell.")
+            fatalError("The dequeued cell is not an instance of ContrastAgentTableViewCell.")
         }
-        // Depending on the section, fill the textLabel with the relevant text
-       
+        
         let contrastAgent =  contrastAgents[indexPath.row]
         
         cell.contrastAgentNameLabel.text = contrastAgent.name
@@ -67,7 +82,7 @@ class ContrastAgentTableViewController: UITableViewController {
     }
     
     
-    private func loadContrastAgents() {
+    private func loadDefaultContrastAgents() {
         
         guard let gadobenateDimeglumine = ContrastAgent(
             name: "gadobenate dimeglumine (MultiHance)",
@@ -75,13 +90,13 @@ class ContrastAgentTableViewController: UITableViewController {
             concentrationUnit: "M",
             dose: "0.1",
             doseUnit: "mmol/kg",
-            notes: "-",
+            notes: nil,
             packageInsert: "https://medlibrary.org/lib/rx/meds/multihance-1/") else {
                 fatalError("Failed To Load ")
         }
         
         guard let gadoxecticAcid = ContrastAgent(
-            name: "Gadoxectic Acid (Eovist)",
+            name: "gadoxectic acid (Eovist)",
             concentration: "0.25",
             concentrationUnit: "M",
             dose: "0.25",
@@ -97,7 +112,7 @@ class ContrastAgentTableViewController: UITableViewController {
             concentrationUnit: "M",
             dose: "0.03",
             doseUnit: "mmol/kg",
-            notes: "-",
+            notes: nil,
             packageInsert: "https://medlibrary.org/lib/rx/meds/ablavar/") else {
                 fatalError("")
         }
@@ -108,7 +123,7 @@ class ContrastAgentTableViewController: UITableViewController {
             concentrationUnit: "M",
             dose: "0.1",
             doseUnit: "mmol/kg",
-            notes: "-",
+            notes: nil,
             packageInsert: "https://medlibrary.org/lib/rx/meds/dotarem/") else {
                 fatalError("")
         }
@@ -119,7 +134,7 @@ class ContrastAgentTableViewController: UITableViewController {
             concentrationUnit: "M",
             dose: "0.1",
             doseUnit: "mmol/kg",
-            notes: "-",
+            notes: nil,
             packageInsert: "https://medlibrary.org/lib/rx/meds/prohance-1/") else {
                 fatalError("")
         }
@@ -130,7 +145,7 @@ class ContrastAgentTableViewController: UITableViewController {
             concentrationUnit: "M",
             dose: "0.1",
             doseUnit: "mmol/kg",
-            notes: "-",
+            notes: nil,
             packageInsert: "https://medlibrary.org/lib/rx/meds/magnevist-1/") else {
             fatalError("")
         }
@@ -141,7 +156,7 @@ class ContrastAgentTableViewController: UITableViewController {
             concentrationUnit: "M",
             dose: "0.1",
             doseUnit: "mmol/kg",
-            notes: "-",
+            notes: nil,
             packageInsert: "https://medlibrary.org/lib/rx/meds/omniscan/") else {
                 fatalError("")
         }
@@ -152,7 +167,7 @@ class ContrastAgentTableViewController: UITableViewController {
             concentrationUnit: "M",
             dose: "0.1",
             doseUnit: "mmol/kg",
-            notes: "-",
+            notes: nil,
             packageInsert: "https://medlibrary.org/lib/rx/meds/optimark-1/") else {
                 fatalError("")
         }
@@ -163,7 +178,7 @@ class ContrastAgentTableViewController: UITableViewController {
             concentrationUnit: "M",
             dose: "0.1",
             doseUnit: "mmol/kg",
-            notes: "-",
+            notes: nil,
             packageInsert: "https://medlibrary.org/lib/rx/meds/gadavist-1/") else {
                 fatalError("")
         }
@@ -178,12 +193,15 @@ class ContrastAgentTableViewController: UITableViewController {
             packageInsert: "https://medlibrary.org/lib/rx/meds/feraheme-1/") else {
                 fatalError("")
         }
+        
         contrastAgents += [gadobenateDimeglumine, gadoxecticAcid, gadofosvesetTrisodium, gadoterateMeglumine, gadoteridol, gadopentatateDimeglumine, gadodiamide, gadoversetamide, gadobutrol, ferumoxytol]
     }
     
+    private func loadContrastAgents() -> [ContrastAgent]? {
+        return NSKeyedUnarchiver.unarchiveObject(withFile: ContrastAgent.ArchiveURL.path) as? [ContrastAgent]
+    }
+    
     func addLogo() {
-        let nav = self.navigationController?.navigationBar
-        
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
         imageView.contentMode = .scaleAspectFit
         
