@@ -110,6 +110,7 @@ class ContrastAgentTableViewController: UITableViewController {
         
         guard let gadobenateDimeglumine = ContrastAgent(
             name: "gadobenate dimeglumine (MultiHance)",
+            sortOrder: 1,
             concentration: "0.5",
             concentrationUnit: "M",
             dose: "0.1",
