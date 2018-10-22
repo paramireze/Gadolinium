@@ -5,6 +5,7 @@ class ContrastAgent: NSObject, NSCoding  {
     
     var name: String
     var sortOrder: Int
+    var isHidden: Bool
     var concentration: String
     var concentrationUnit: String
     var dose: String
@@ -19,6 +20,7 @@ class ContrastAgent: NSObject, NSCoding  {
     func encode(with aCoder: NSCoder) {
         aCoder.encode(name, forKey: PropertyKey.name)
         aCoder.encode(sortOrder, forKey: PropertyKey.sortOrder)
+        aCoder.encode(isHidden, forKey: PropertyKey.name)
         aCoder.encode(concentration, forKey: PropertyKey.concentration)
         aCoder.encode(concentrationUnit, forKey: PropertyKey.concentrationUnit)
         aCoder.encode(dose, forKey: PropertyKey.dose)
@@ -37,6 +39,7 @@ class ContrastAgent: NSObject, NSCoding  {
     
         
         let sortOrder = aDecoder.decodeInteger(forKey: PropertyKey.sortOrder)
+        let isHidden = aDecoder.decodeBool(forKey: PropertyKey.isHidden)
         let concentration = aDecoder.decodeObject(forKey: PropertyKey.concentration)
         let concentrationUnit = aDecoder.decodeObject(forKey: PropertyKey.concentrationUnit)
         let dose = aDecoder.decodeObject(forKey: PropertyKey.dose)
@@ -46,12 +49,13 @@ class ContrastAgent: NSObject, NSCoding  {
         let packageInsert = aDecoder.decodeObject(forKey: PropertyKey.packageInsert)
         
         // Must call designated initializer.
-        self.init(name: name, sortOrder: sortOrder, concentration: concentration as! String, concentrationUnit: concentrationUnit as! String, dose: dose as! String, doseUnit: doseUnit as! String, notes: notes, packageInsert: packageInsert as! String)
+        self.init(name: name, sortOrder: sortOrder, isHidden: isHidden, concentration: concentration as! String, concentrationUnit: concentrationUnit as! String, dose: dose as! String, doseUnit: doseUnit as! String, notes: notes, packageInsert: packageInsert as! String)
     }
     
     struct PropertyKey {
         static let name = "name"
         static let sortOrder = "sortOrder"
+        static let isHidden = "isHidden"
         static let concentration = "concentration"
         static let concentrationUnit = "concentrationUnit"
         static let dose = "dose"
@@ -60,7 +64,7 @@ class ContrastAgent: NSObject, NSCoding  {
         static let packageInsert = "packageInsert"
     }
    
-    init?(name: String, sortOrder: Int, concentration: String, concentrationUnit: String, dose: String, doseUnit: String, notes: String?, packageInsert:String) {
+    init?(name: String, sortOrder: Int, isHidden: Bool, concentration: String, concentrationUnit: String, dose: String, doseUnit: String, notes: String?, packageInsert:String) {
         
         // Required fields
         guard !name.isEmpty else{
@@ -91,6 +95,7 @@ class ContrastAgent: NSObject, NSCoding  {
         //Initialize stored properties
         self.name = name
         self.sortOrder = sortOrder
+        self.isHidden = isHidden
         self.concentration = concentration
         self.concentrationUnit = concentrationUnit
         self.dose = dose
