@@ -15,12 +15,12 @@ class ContrastAgent: NSObject, NSCoding  {
     
     //MARK: Archiving Paths
     static let DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
-    static let ArchiveURL = DocumentsDirectory.appendingPathComponent("meals")
+    static let ArchiveURL = DocumentsDirectory.appendingPathComponent("contrastAgents")
     
     func encode(with aCoder: NSCoder) {
         aCoder.encode(name, forKey: PropertyKey.name)
         aCoder.encode(sortOrder, forKey: PropertyKey.sortOrder)
-        aCoder.encode(isHidden, forKey: PropertyKey.name)
+        aCoder.encode(isHidden, forKey: PropertyKey.isHidden)
         aCoder.encode(concentration, forKey: PropertyKey.concentration)
         aCoder.encode(concentrationUnit, forKey: PropertyKey.concentrationUnit)
         aCoder.encode(dose, forKey: PropertyKey.dose)
