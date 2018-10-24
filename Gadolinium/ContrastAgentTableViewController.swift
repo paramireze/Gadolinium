@@ -52,6 +52,25 @@ class ContrastAgentTableViewController: UITableViewController {
         return contrastAgents.count
     }
     
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        print("edit actions for rows at")
+        let contrastAgent =  contrastAgents[indexPath.row]
+
+        let show = UITableViewRowAction(style: .default, title: "Show") { (action, indexPath) in
+            self.contrastAgents[indexPath.row].isHidden = false
+            self.saveContrastAgents()
+        }
+        
+        let hide = UITableViewRowAction(style: .normal, title: "Hide") { (action, indexPath) in
+            self.contrastAgents[indexPath.row].isHidden = true
+            self.saveContrastAgents()
+
+        }
+        
+        show.backgroundColor = UIColor.red
+        return [hide, show]
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // Create an object of the dynamic cell "PlainCell"
         
@@ -62,6 +81,7 @@ class ContrastAgentTableViewController: UITableViewController {
         }
         
         let contrastAgent =  contrastAgents[indexPath.row]
+        
         
         cell.contrastAgentNameLabel.text = contrastAgent.name
         cell.contrastAgentDoseLabel.text = "Dose: " + contrastAgent.dose + " " + contrastAgent.doseUnit
