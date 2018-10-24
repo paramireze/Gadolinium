@@ -58,8 +58,6 @@ class ContrastAgentTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    // MARK: UITableViewDataSource
-    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -88,10 +86,11 @@ class ContrastAgentTableViewController: UITableViewController {
     
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
+
         if (isEditing) {
             self.navigationController?.isToolbarHidden = false
         }
+        
         return true
     }
 
@@ -129,6 +128,7 @@ class ContrastAgentTableViewController: UITableViewController {
     private func saveContrastAgents() {
         let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(contrastAgents, toFile: ContrastAgent.ArchiveURL.path)
         
+        
         if isSuccessfulSave {
             os_log("Contrast Agent successfully saved.", log: OSLog.default, type: .debug)
         } else {
@@ -164,6 +164,7 @@ class ContrastAgentTableViewController: UITableViewController {
     }
     
     private func loadDefaultContrastAgents() {
+        contrastAgents = [ContrastAgent]()
         
         guard let gadobenateDimeglumine = ContrastAgent(
             name: "gadobenate dimeglumine (MultiHance)",
