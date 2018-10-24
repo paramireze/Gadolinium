@@ -84,6 +84,18 @@ class ContrastAgentTableViewController: UITableViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let contrastAgent =  contrastAgents[indexPath.row]
+        if(self.tableView.isEditing == true) {
+        } else {
+            if contrastAgent.isHidden {
+                return 0.0
+            } else if let isHidden = tableView.cellForRow(at: indexPath)?.contentView.isHidden, isHidden {
+                return 0.0
+            }
+        }
+        return super.tableView(tableView, heightForRowAt: indexPath)
+    }
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
@@ -132,6 +144,35 @@ class ContrastAgentTableViewController: UITableViewController {
         contrastAgentViewController.contrastAgent = selectedContrastAgent
     }
     
+    // store contrast agent objects to this devices file system
+    private func saveContrastAgents() {
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(contrastAgents, toFile: ContrastAgent.ArchiveURL.path)
+        
+        if isSuccessfulSave {
+            os_log("Contrast Agent successfully saved.", log: OSLog.default, type: .debug)
+        } else {
+            os_log("Failed to save contrast agent...", log: OSLog.default, type: .error)
+        }
+    }
+    
+    // grab the contrast agents stored locally on this device
+    private func loadContrastAgents() -> [ContrastAgent]? {
+        return NSKeyedUnarchiver.unarchiveObject(withFile: ContrastAgent.ArchiveURL.path) as? [ContrastAgent]
+    }
+    
+    // dynamically add logo to top right of screen in nav bar
+    func addLogo() {
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        imageView.contentMode = .scaleAspectFit
+        
+        let image = UIImage(named: "Crest")?.withRenderingMode(.alwaysOriginal)
+        imageView.image = image
+        
+        let logo = UIBarButtonItem(image: image, style: UIBarButtonItemStyle.plain, target: self, action: nil)
+        
+        self.navigationItem.rightBarButtonItem = logo
+        
+    }
     
     // generate alert
     func alert(title: String, message: String) {
@@ -276,20 +317,4 @@ class ContrastAgentTableViewController: UITableViewController {
         contrastAgents += [gadobenateDimeglumine, gadoxecticAcid, gadofosvesetTrisodium, gadoterateMeglumine, gadoteridol, gadopentatateDimeglumine, gadodiamide, gadoversetamide, gadobutrol, ferumoxytol]
     }
     
-    private func loadContrastAgents() -> [ContrastAgent]? {
-        return NSKeyedUnarchiver.unarchiveObject(withFile: ContrastAgent.ArchiveURL.path) as? [ContrastAgent]
-    }
-    
-    func addLogo() {
-        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
-        imageView.contentMode = .scaleAspectFit
-        
-        let image = UIImage(named: "Crest")?.withRenderingMode(.alwaysOriginal)
-        imageView.image = image
-        
-        let logo = UIBarButtonItem(image: image, style: UIBarButtonItemStyle.plain, target: self, action: nil)
-        
-        self.navigationItem.rightBarButtonItem = logo
-        
-    }
 }
