@@ -5,6 +5,7 @@ class ContrastAgentTableViewController: UITableViewController {
     
     var contrastAgents = [ContrastAgent]()
     let cellIdentifier = "ContrastAgentTableViewCell"
+    var wasEditing = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -88,7 +89,12 @@ class ContrastAgentTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
 
         if (isEditing) {
+            wasEditing = true
             self.navigationController?.isToolbarHidden = false
+        } else if (!isEditing && wasEditing) {
+            print("done editing")
+            wasEditing = false
+            saveContrastAgents()
         }
         
         return true
@@ -166,7 +172,6 @@ class ContrastAgentTableViewController: UITableViewController {
         let logo = UIBarButtonItem(image: image, style: UIBarButtonItemStyle.plain, target: self, action: nil)
         
         self.navigationItem.rightBarButtonItem = logo
-        
     }
     
     // generate alert
