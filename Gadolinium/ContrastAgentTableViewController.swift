@@ -140,6 +140,14 @@ class ContrastAgentTableViewController: UITableViewController {
     }
     
     
+    // generate alert
+    func alert(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
     private func loadDefaultContrastAgents() {
         
         guard let gadobenateDimeglumine = ContrastAgent(
