@@ -4,6 +4,7 @@ import os.log
 class ContrastAgentTableViewController: UITableViewController {
     
     var contrastAgents = [ContrastAgent]()
+    let cellIdentifier = "ContrastAgentTableViewCell"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,13 +29,6 @@ class ContrastAgentTableViewController: UITableViewController {
         let message = "The results obtained with the Gadolinium Dose Calculator are intended to serve solely as guidelines for physicians and MRI technicians and should be considered as indicative only. The use of the calculator should not in any way substitute for the evaluation of a qualified physician. radiology.wisc.edu and/or the Board of Regents of the University of Wisconsin System, its officers, employees, and agents cannot be held responsible for the reliability of any results provided by the use of the calculator. The calculator may give inaccurate results due to the insertion of inaccurate data by the user, by a technical error within the application at the moment of calculation, or other unforeseen circumstances."
         
         alert(title: title, message: message)
-    }
-    
-    func alert(title: String, message: String) {
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
-        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
-        
-        self.present(alertController, animated: true, completion: nil)
     }
     
     override func didReceiveMemoryWarning() {
@@ -74,7 +68,6 @@ class ContrastAgentTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // Create an object of the dynamic cell "PlainCell"
         
-        let cellIdentifier = "ContrastAgentTableViewCell"
     
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ContrastAgentTableViewCell  else {
             fatalError("The dequeued cell is not an instance of ContrastAgentTableViewCell.")
