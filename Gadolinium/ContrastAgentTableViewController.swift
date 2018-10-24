@@ -45,30 +45,10 @@ class ContrastAgentTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return contrastAgents.count
     }
-    
-    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        print("edit actions for rows at")
-        let contrastAgent =  contrastAgents[indexPath.row]
-
-        let show = UITableViewRowAction(style: .default, title: "Show") { (action, indexPath) in
-            self.contrastAgents[indexPath.row].isHidden = false
-            self.saveContrastAgents()
-        }
-        
-        let hide = UITableViewRowAction(style: .normal, title: "Hide") { (action, indexPath) in
-            self.contrastAgents[indexPath.row].isHidden = true
-            self.saveContrastAgents()
-
-        }
-        
-        show.backgroundColor = UIColor.red
-        return [hide, show]
-    }
-    
+  
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // Create an object of the dynamic cell "PlainCell"
         
-    
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ContrastAgentTableViewCell  else {
             fatalError("The dequeued cell is not an instance of ContrastAgentTableViewCell.")
         }
@@ -84,44 +64,20 @@ class ContrastAgentTableViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let contrastAgent =  contrastAgents[indexPath.row]
-        if(self.tableView.isEditing == true) {
-        } else {
-            if contrastAgent.isHidden {
-                return 0.0
-            } else if let isHidden = tableView.cellForRow(at: indexPath)?.contentView.isHidden, isHidden {
-                return 0.0
-            }
-        }
-        return super.tableView(tableView, heightForRowAt: indexPath)
-    }
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
     }
-    
-    
-    
+
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let contrastAgent =  contrastAgents[indexPath.row]
+            contrastAgents.remove(at: indexPath.row)
             saveContrastAgents()
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }
-    }
-    
-    private func saveContrastAgents() {
-        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(contrastAgents, toFile: ContrastAgent.ArchiveURL.path)
-        
-        if isSuccessfulSave {
-            os_log("Contrast Agent successfully saved.", log: OSLog.default, type: .debug)
-        } else {
-            os_log("Failed to save contrast agent...", log: OSLog.default, type: .error)
         }
     }
     
