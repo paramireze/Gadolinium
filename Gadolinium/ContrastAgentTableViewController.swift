@@ -12,16 +12,38 @@ class ContrastAgentTableViewController: UITableViewController {
         // Use the edit button item provided by the table view controller.
         navigationItem.leftBarButtonItem = editButtonItem
         
+        // dynamically create logo
         addLogo()
         
+        // hide toolbar by default unless in edit mode
+        self.navigationController?.isToolbarHidden = true
+        
+        // create toolbar controls
+        var items = [UIBarButtonItem]()
+        items.append( UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil) )
+        items.append( UIBarButtonItem(barButtonSystemItem: .undo, target: self, action: #selector(undoChanges)))
+        self.toolbarItems = items // this made the difference. setting the items to the controller, not the navigationcontroller
+        
+        // load stored or the default contrast agent settings
         if let savedContrastAgents = loadContrastAgents() {
             contrastAgents += savedContrastAgents
         } else {
             loadDefaultContrastAgents()
         }
         
+        // set height
         tableView.rowHeight = 70
+        
+        // let everyone know that this is not a clinical application
         showDisclaimer()
+    }
+    
+    @objc func undoChanges() {
+        loadDefaultContrastAgents()
+        saveContrastAgents()
+        DispatchQueue.main.async{
+            self.tableView.reloadData()
+        }
     }
     
     func showDisclaimer() {
@@ -67,6 +89,9 @@ class ContrastAgentTableViewController: UITableViewController {
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
+        if (isEditing) {
+            self.navigationController?.isToolbarHidden = false
+        }
         return true
     }
 
