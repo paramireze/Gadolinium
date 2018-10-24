@@ -124,6 +124,20 @@ class ContrastAgentTableViewController: UITableViewController {
         contrastAgentViewController.contrastAgent = selectedContrastAgent
     }
     
+    
+     // Override to support rearranging the table view.
+     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
+     
+     }
+    
+     // Override to support conditional rearranging of the table view.
+     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        // Return false if you do not want the item to be re-orderable.
+        contrastAgents[indexPath.row].sortOrder = indexPath.row
+        return true
+     }
+    
+    
     // store contrast agent objects to this devices file system
     private func saveContrastAgents() {
         let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(contrastAgents, toFile: ContrastAgent.ArchiveURL.path)
