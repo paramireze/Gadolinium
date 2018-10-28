@@ -32,6 +32,8 @@ class ContrastAgentTableViewController: UITableViewController {
             loadDefaultContrastAgents()
         }
         
+        contrastAgents.sort(by: ( { $0.sortOrder < $1.sortOrder } ))
+
         // set height
         tableView.rowHeight = 70
         
@@ -76,7 +78,6 @@ class ContrastAgentTableViewController: UITableViewController {
         
         let contrastAgent =  contrastAgents[indexPath.row]
         
-        
         cell.contrastAgentNameLabel.text = contrastAgent.name
         cell.contrastAgentDoseLabel.text = "Dose: " + contrastAgent.dose + " " + contrastAgent.doseUnit
         cell.contrastAgentConcentrationLabel.text = "Conc: " +  contrastAgent.concentration + " " + contrastAgent.concentrationUnit
@@ -91,23 +92,41 @@ class ContrastAgentTableViewController: UITableViewController {
         if (isEditing) {
             wasEditing = true
             self.navigationController?.isToolbarHidden = false
-        } else if (!isEditing && wasEditing) {
-            print("done editing")
-            wasEditing = false
+        } else if (isFinishedEditing()) {
             saveContrastAgents()
         }
         
         return true
+    }
+    
+    func isFinishedEditing() -> Bool {
+        
+        if (!isEditing && wasEditing) {
+            print("done editing")
+            wasEditing = false
+        }
+        
+        return wasEditing
     }
 
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             contrastAgents.remove(at: indexPath.row)
+            reassignSortOrder()
             saveContrastAgents()
             tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+        }
+    }
+    
+    /*
+     cycle through the contrast agents and reassign sortOrder.
+     */
+    func reassignSortOrder() {
+        var newSortOrder = 0
+        for contrastAgent in contrastAgents {
+            contrastAgent.sortOrder = newSortOrder
+            newSortOrder = newSortOrder + 1
         }
     }
     
@@ -133,21 +152,19 @@ class ContrastAgentTableViewController: UITableViewController {
     
      // Override to support rearranging the table view.
      override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-     
+    
      }
     
      // Override to support conditional rearranging of the table view.
      override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        contrastAgents[indexPath.row].sortOrder = indexPath.row
         return true
      }
     
     
     // store contrast agent objects to this devices file system
     private func saveContrastAgents() {
-        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(contrastAgents, toFile: ContrastAgent.ArchiveURL.path)
         
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(contrastAgents, toFile: ContrastAgent.ArchiveURL.path)
         
         if isSuccessfulSave {
             os_log("Contrast Agent successfully saved.", log: OSLog.default, type: .debug)
@@ -304,7 +321,7 @@ class ContrastAgentTableViewController: UITableViewController {
         
         guard let ferumoxytol = ContrastAgent(
             name: "ferumoxytol (Feraheme)",
-            sortOrder: 10,
+            sortOrder: 0,
             isHidden: false,
             concentration: "30",
             concentrationUnit: "mg/ml",
