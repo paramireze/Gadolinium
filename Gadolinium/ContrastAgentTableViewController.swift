@@ -32,12 +32,13 @@ class ContrastAgentTableViewController: UITableViewController {
             loadDefaultContrastAgents()
         }
         
-        contrastAgents.sort(by: ( { $0.sortOrder < $1.sortOrder } ))
+        // organize contrast agents by sorting using the sortOrder property
+        rearrangeContrastAgents()
 
         // set height
         tableView.rowHeight = 70
         
-        // let everyone know that this is not a clinical application
+        // let the world know that this is not a clinical application
         showDisclaimer()
     }
     
@@ -49,6 +50,9 @@ class ContrastAgentTableViewController: UITableViewController {
         }
     }
     
+    /*
+     default disclaimer message when app opens
+    */
     func showDisclaimer() {
         let title = "Disclaimer"
         let message = "The results obtained with the Gadolinium Dose Calculator are intended to serve solely as guidelines for physicians and MRI technicians and should be considered as indicative only. The use of the calculator should not in any way substitute for the evaluation of a qualified physician. radiology.wisc.edu and/or the Board of Regents of the University of Wisconsin System, its officers, employees, and agents cannot be held responsible for the reliability of any results provided by the use of the calculator. The calculator may give inaccurate results due to the insertion of inaccurate data by the user, by a technical error within the application at the moment of calculation, or other unforeseen circumstances."
@@ -93,20 +97,31 @@ class ContrastAgentTableViewController: UITableViewController {
             wasEditing = true
             self.navigationController?.isToolbarHidden = false
         } else if (isFinishedEditing()) {
+            wasEditing = false
             saveContrastAgents()
         }
         
         return true
     }
     
+    /*
+     check when user clicks the done button
+    */
     func isFinishedEditing() -> Bool {
+        return !isEditing && wasEditing
+    }
+    
+    /*
+     useful method for quick debugging
+    */
+    func showContrastAgents() {
         
-        if (!isEditing && wasEditing) {
-            print("done editing")
-            wasEditing = false
+        for contrastAgent in contrastAgents {
+        
+            print( " sort order: ", contrastAgent.sortOrder, ", name: ", contrastAgent.name)
         }
         
-        return wasEditing
+        print("------------ done editing ------------")
     }
 
     // Override to support editing the table view.
@@ -123,11 +138,20 @@ class ContrastAgentTableViewController: UITableViewController {
      cycle through the contrast agents and reassign sortOrder.
      */
     func reassignSortOrder() {
+        
         var newSortOrder = 0
+        
         for contrastAgent in contrastAgents {
             contrastAgent.sortOrder = newSortOrder
             newSortOrder = newSortOrder + 1
         }
+    }
+    
+    /*
+     rearrange contrast agent list using the sort order property value
+    */
+    func rearrangeContrastAgents() {
+        contrastAgents.sort(by: ( { $0.sortOrder < $1.sortOrder } ))
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -151,12 +175,40 @@ class ContrastAgentTableViewController: UITableViewController {
     
     
      // Override to support rearranging the table view.
-     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-    
+     override func tableView(_ tableView: UITableView, moveRowAt from: IndexPath, to: IndexPath) {
+
+        if from.row < to.row {
+            // reference rows that need to be reassigned sort order
+            let start = from.row + 1
+            let end = to.row
+            
+            // subtract 1 to the sort order property
+            for reorderIndex in start ... end {
+                contrastAgents[reorderIndex].sortOrder = contrastAgents[reorderIndex].sortOrder - 1
+            }
+            
+        } else if (from.row > to.row) {
+            // reference rows that need to be reassigned sort order
+            let start = to.row
+            let end = from.row - 1
+            
+            // add 1 to the sort order property
+            for reorderIndex in (start ... end).reversed() {
+                contrastAgents[reorderIndex].sortOrder = contrastAgents[reorderIndex].sortOrder + 1
+            }
+        }
+        
+        // update the sortOrder of the row the user moved
+        if (from.row != to.row) {
+            contrastAgents[from.row].sortOrder = to.row
+            rearrangeContrastAgents()
+        }
+       
      }
     
      // Override to support conditional rearranging of the table view.
      override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        
         return true
      }
     
