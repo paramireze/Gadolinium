@@ -12,6 +12,7 @@ class ViewController: UIViewController {
 
     //MARK: --Variables
     var weightUnitConversion: Double!
+    var maximumDose: Double!
     var concentration: Double!
     let toolBar = UIToolbar()
     
@@ -27,9 +28,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var lbsButton: UIButton!
     @IBOutlet weak var kgButton: UIButton!
     
-    
     var contrastAgent: ContrastAgent?
-
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for:segue, sender: sender)
@@ -84,6 +83,7 @@ class ViewController: UIViewController {
             
             contrastAgentNameLabel.text = contrastAgentString
             doseTextField.text = contrastAgent.dose
+            maximumDose = Double(contrastAgent.maximumDose)
             concentration = Double(contrastAgent.concentration)
             doseUnitLabel.text = contrastAgent.doseUnit
         }
@@ -222,13 +222,16 @@ class ViewController: UIViewController {
     }
     
     @objc func formSubmit () {
-        let dose: Double? = getDose()
+        let dose: Double! = getDose()
         let weight: Double? = getWeight()
         
         if (isInValidInput(input: weight!)) {
             hideLabels(value: true)
         } else {
             setWeightUnit()
+            if (dose > maximumDose) {
+                alert(title: "Maximum dose exceeded", message: "Maximum dose is"  + String(maximumDose))
+            }
             displayResult(dose: dose!, weight: weight!)
             showFormula(dose: dose!, weight: weight!)
             hideLabels(value: false)

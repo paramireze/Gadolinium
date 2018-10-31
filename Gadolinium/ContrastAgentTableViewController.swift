@@ -259,6 +259,7 @@ class ContrastAgentTableViewController: UITableViewController {
             concentration: "0.5",
             concentrationUnit: "M",
             dose: "0.1",
+            maximumDose:"0.2",
             doseUnit: "mmol/kg",
             notes: nil,
             packageInsert: "https://medlibrary.org/lib/rx/meds/multihance-1/") else {
@@ -272,25 +273,13 @@ class ContrastAgentTableViewController: UITableViewController {
             concentration: "0.25",
             concentrationUnit: "M",
             dose: "0.25",
+            maximumDose: "0.05",
             doseUnit: "mmol/kg",
             notes: "UW standard dose differs from package insert. Eovist dose at UW is 2x package insert, and is an off-label dose.",
             packageInsert: "https://medlibrary.org/lib/rx/meds/eovist/") else {
                 fatalError("")
         }
         
-        guard let gadofosvesetTrisodium = ContrastAgent(
-            name: "gadofosveset trisodium (Ablavar)",
-            sortOrder: 3,
-            isHidden: false,
-            concentration: "0.25",
-            concentrationUnit: "M",
-            dose: "0.03",
-            doseUnit: "mmol/kg",
-            notes: nil,
-            packageInsert: "https://medlibrary.org/lib/rx/meds/ablavar/") else {
-                fatalError("")
-        }
-
         guard let gadoterateMeglumine = ContrastAgent(
             name: "gadoterate meglumine (Dotarem)",
             sortOrder: 4,
@@ -298,6 +287,7 @@ class ContrastAgentTableViewController: UITableViewController {
             concentration: "0.5",
             concentrationUnit: "M",
             dose: "0.1",
+            maximumDose:"0.2",
             doseUnit: "mmol/kg",
             notes: nil,
             packageInsert: "https://medlibrary.org/lib/rx/meds/dotarem/") else {
@@ -311,6 +301,7 @@ class ContrastAgentTableViewController: UITableViewController {
             concentration: "0.5",
             concentrationUnit: "M",
             dose: "0.1",
+            maximumDose:"0.2",
             doseUnit: "mmol/kg",
             notes: nil,
             packageInsert: "https://medlibrary.org/lib/rx/meds/prohance-1/") else {
@@ -324,6 +315,7 @@ class ContrastAgentTableViewController: UITableViewController {
             concentration: "0.5",
             concentrationUnit: "M",
             dose: "0.1",
+            maximumDose:"0.2",
             doseUnit: "mmol/kg",
             notes: nil,
             packageInsert: "https://medlibrary.org/lib/rx/meds/magnevist-1/") else {
@@ -337,22 +329,10 @@ class ContrastAgentTableViewController: UITableViewController {
             concentration: "0.5",
             concentrationUnit: "M",
             dose: "0.1",
+            maximumDose: "0.2",
             doseUnit: "mmol/kg",
             notes: nil,
             packageInsert: "https://medlibrary.org/lib/rx/meds/omniscan/") else {
-                fatalError("")
-        }
- 
-        guard let gadoversetamide = ContrastAgent(
-            name: "gadoversetamide (Optimark)",
-            sortOrder: 8,
-            isHidden: false,
-            concentration: "0.5",
-            concentrationUnit: "M",
-            dose: "0.1",
-            doseUnit: "mmol/kg",
-            notes: nil,
-            packageInsert: "https://medlibrary.org/lib/rx/meds/optimark-1/") else {
                 fatalError("")
         }
         
@@ -363,6 +343,7 @@ class ContrastAgentTableViewController: UITableViewController {
             concentration: "1",
             concentrationUnit: "M",
             dose: "0.1",
+            maximumDose: "0.2",
             doseUnit: "mmol/kg",
             notes: nil,
             packageInsert: "https://medlibrary.org/lib/rx/meds/gadavist-1/") else {
@@ -376,13 +357,14 @@ class ContrastAgentTableViewController: UITableViewController {
             concentration: "30",
             concentrationUnit: "mg/ml",
             dose: "3",
+            maximumDose:"5.0",
             doseUnit: "mg/kg",
             notes: "The use of ferumoxytol for MRI is an off-label use of this agent. The standard dose at UW for this off-label application is 3.0 mg/kg.",
             packageInsert: "https://medlibrary.org/lib/rx/meds/feraheme-1/") else {
                 fatalError("")
         }
         
-        contrastAgents += [gadobenateDimeglumine, gadoxecticAcid, gadofosvesetTrisodium, gadoterateMeglumine, gadoteridol, gadopentatateDimeglumine, gadodiamide, gadoversetamide, gadobutrol, ferumoxytol]
+        contrastAgents += [gadobenateDimeglumine, gadoxecticAcid,  gadoterateMeglumine, gadoteridol, gadopentatateDimeglumine, gadodiamide, gadobutrol, ferumoxytol]
     }
     
 }
