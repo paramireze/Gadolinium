@@ -11,10 +11,9 @@ import UIKit
 class ViewController: UIViewController {
 
     //MARK: --Variables
-    let toolBar = UIToolbar()
-    
     var weightUnitConversion: Double!
     var concentration: Double!
+    let toolBar = UIToolbar()
     
     //MARK: --IBOutputs
     @IBOutlet weak var doseUnitLabel: UILabel!
@@ -34,6 +33,7 @@ class ViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for:segue, sender: sender)
+        toolBar.isHidden = true
     }
     
     //MARK: --IBActions
@@ -129,21 +129,17 @@ class ViewController: UIViewController {
     }
 
     func displayResult(dose: Double, weight: Double) {
-        
         let result = round(dose * (weight * weightUnitConversion) / concentration)
-        
         resultTextField.text = String(result) + " ml"
     }
     
     func showFormula(dose: Double, weight: Double) {
-        
         let doseText = String(dose)
         let weightText = String(getWeightMultipliedByWeightUnit())
         let concentrationText = String(concentration)
         
         equationLabel.text = "(" + doseText + " mmol/kg * " + weightText + " kgs) / " + concentrationText + " mmol/ml"
     }
-    
 
     func hideLabels(value: Bool) {
         formulaLabel.isHidden = value
@@ -228,7 +224,6 @@ class ViewController: UIViewController {
     @objc func formSubmit () {
         let dose: Double? = getDose()
         let weight: Double? = getWeight()
-        print(weight!)
         
         if (isInValidInput(input: weight!)) {
             hideLabels(value: true)
@@ -238,7 +233,6 @@ class ViewController: UIViewController {
             showFormula(dose: dose!, weight: weight!)
             hideLabels(value: false)
         }
-    
     }
     
     func isInValidInput(input: Double) -> Bool {
