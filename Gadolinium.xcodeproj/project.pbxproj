@@ -14,6 +14,7 @@
 		107ECA18210DEAF100250945 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107ECA17210DEAF100250945 /* ViewController.swift */; };
 		107ECA1B210DEAF100250945 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 107ECA19210DEAF100250945 /* Main.storyboard */; };
 		107ECA1D210DEAF400250945 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 107ECA1C210DEAF400250945 /* Assets.xcassets */; };
+		10D30321218FE64200C8A712 /* PackageInsertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D30320218FE64200C8A712 /* PackageInsertViewController.swift */; };
 		10EBF24521753D6A00F27029 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10EBF24421753D6A00F27029 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +28,7 @@
 		107ECA1A210DEAF100250945 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		107ECA1C210DEAF400250945 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		107ECA21210DEAF400250945 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		10D30320218FE64200C8A712 /* PackageInsertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackageInsertViewController.swift; sourceTree = "<group>"; };
 		10EBF24421753D6A00F27029 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -69,6 +71,7 @@
 				1026BB822147F1D700860B01 /* ContrastAgent.swift */,
 				1026BB86214A897000860B01 /* ContrastAgentTableViewController.swift */,
 				1026BB88214A8A8A00860B01 /* ContrastAgentTableViewCell.swift */,
+				10D30320218FE64200C8A712 /* PackageInsertViewController.swift */,
 			);
 			path = Gadolinium;
 			sourceTree = "<group>";
@@ -145,6 +148,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1026BB832147F1D700860B01 /* ContrastAgent.swift in Sources */,
+				10D30321218FE64200C8A712 /* PackageInsertViewController.swift in Sources */,
 				107ECA18210DEAF100250945 /* ViewController.swift in Sources */,
 				107ECA16210DEAF100250945 /* AppDelegate.swift in Sources */,
 				1026BB87214A897000860B01 /* ContrastAgentTableViewController.swift in Sources */,
@@ -284,15 +288,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = G6ZMN3P4S9;
+				DEVELOPMENT_TEAM = C658W77DY8;
 				INFOPLIST_FILE = Gadolinium/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = asdf.corporation.Gadolinium;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.wisc.radiology.gad;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -302,15 +308,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = G6ZMN3P4S9;
+				DEVELOPMENT_TEAM = C658W77DY8;
 				INFOPLIST_FILE = Gadolinium/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = asdf.corporation.Gadolinium;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.wisc.radiology.gad;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

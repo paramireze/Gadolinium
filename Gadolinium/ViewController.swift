@@ -33,6 +33,13 @@ class ViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for:segue, sender: sender)
         toolBar.isHidden = true
+        
+        guard let packageInsertViewController = segue.destination as? PackageInsertViewController else {
+            fatalError("Unexpected Destination: \(segue.destination)")
+        }
+        
+        let packageInsert = contrastAgent?.packageInsert
+        packageInsertViewController.packageInsert = packageInsert
     }
     
     //MARK: --IBActions
@@ -221,20 +228,26 @@ class ViewController: UIViewController {
         )
     }
     
-    @objc func formSubmit () {
+    @objc func formSubmit() {
         let dose: Double! = getDose()
         let weight: Double? = getWeight()
         
         if (isInValidInput(input: weight!)) {
             hideLabels(value: true)
-        } else {
-            setWeightUnit()
-            if (dose > maximumDose) {
-                alert(title: "Maximum dose exceeded", message: "Maximum dose is"  + String(maximumDose))
-            }
-            displayResult(dose: dose!, weight: weight!)
-            showFormula(dose: dose!, weight: weight!)
-            hideLabels(value: false)
+            return
+        }
+        
+        setWeightUnit()
+        validateDoseExceedsMaximum(dose: dose, maximumDose: maximumDose)
+        displayResult(dose: dose!, weight: weight!)
+        showFormula(dose: dose!, weight: weight!)
+        hideLabels(value: false)
+        
+    }
+    
+    func validateDoseExceedsMaximum(dose: Double, maximumDose: Double) {
+        if (dose > maximumDose) {
+            alert(title: "Maximum dose exceeded", message: "Maximum dose is"  + String(maximumDose))
         }
     }
     
