@@ -247,7 +247,7 @@ class ViewController: UIViewController {
     
     func validateDoseExceedsMaximum(dose: Double, maximumDose: Double) {
         if (dose > maximumDose) {
-            alert(title: "Maximum dose exceeded", message: "Maximum dose is"  + String(maximumDose))
+            alert(title: "Maximum dose exceeded", message: "Maximum dose is "  + String(maximumDose))
         }
     }
     

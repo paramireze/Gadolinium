@@ -272,11 +272,11 @@ class ContrastAgentTableViewController: UITableViewController {
             isHidden: false,
             concentration: "0.25",
             concentrationUnit: "M",
-            dose: "0.25",
+            dose: "0.05",
             maximumDose: "0.05",
             doseUnit: "mmol/kg",
             notes: "UW standard dose differs from package insert. Eovist dose at UW is 2x package insert, and is an off-label dose.",
-            packageInsert: "https://medlibrary.org/lib/rx/meds/eovist/") else {
+            packageInsert: "http://medlibrary.org/lib/rx/meds/eovist-1/") else {
                 fatalError("")
         }
         
