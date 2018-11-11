@@ -97,6 +97,7 @@ class ContrastAgentTableViewController: UITableViewController {
             wasEditing = true
             self.navigationController?.isToolbarHidden = false
         } else if (isFinishedEditing()) {
+            self.navigationController?.isToolbarHidden = true
             wasEditing = false
             saveContrastAgents()
         }
