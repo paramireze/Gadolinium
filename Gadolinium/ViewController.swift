@@ -19,6 +19,7 @@ class ViewController: UIViewController {
     //MARK: --IBOutputs
     @IBOutlet weak var doseUnitLabel: UILabel!
     @IBOutlet weak var contrastAgentNameLabel: UILabel!
+    @IBOutlet weak var contrastAgentDescriptionLabel: UILabel!
     @IBOutlet weak var weightTextField: UITextField!
     @IBOutlet weak var doseTextField: UITextField!
     @IBOutlet weak var resultTextField: UILabel!
@@ -82,13 +83,14 @@ class ViewController: UIViewController {
         
         if let contrastAgent = contrastAgent {
             
-            var contrastAgentString = contrastAgent.name
-            
-            if (contrastAgent.notes != nil) {
-                contrastAgentString += "\n " + contrastAgent.notes!
-            }
+            let contrastAgentString = contrastAgent.name
+            print(contrastAgent.notes)
             
             contrastAgentNameLabel.text = contrastAgentString
+            if (contrastAgent.notes != nil) {
+                contrastAgentDescriptionLabel.text = contrastAgent.notes!
+            } 
+            
             doseTextField.text = contrastAgent.dose
             maximumDose = Double(contrastAgent.maximumDose)
             concentration = Double(contrastAgent.concentration)
