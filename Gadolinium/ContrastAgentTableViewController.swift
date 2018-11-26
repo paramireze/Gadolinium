@@ -255,7 +255,7 @@ class ContrastAgentTableViewController: UITableViewController {
         
         guard let gadobenateDimeglumine = ContrastAgent(
             name: "gadobenate dimeglumine (MultiHance)",
-            sortOrder: 1,
+            sortOrder: 0,
             isHidden: false,
             concentration: "0.5",
             concentrationUnit: "M",
@@ -269,7 +269,7 @@ class ContrastAgentTableViewController: UITableViewController {
         
         guard let gadoxecticAcid = ContrastAgent(
             name: "gadoxectic acid (Eovist)",
-            sortOrder: 2,
+            sortOrder: 1,
             isHidden: false,
             concentration: "0.25",
             concentrationUnit: "M",
@@ -283,7 +283,7 @@ class ContrastAgentTableViewController: UITableViewController {
         
         guard let gadoterateMeglumine = ContrastAgent(
             name: "gadoterate meglumine (Dotarem)",
-            sortOrder: 4,
+            sortOrder: 2,
             isHidden: false,
             concentration: "0.5",
             concentrationUnit: "M",
@@ -297,7 +297,7 @@ class ContrastAgentTableViewController: UITableViewController {
  
         guard let gadoteridol = ContrastAgent(
             name: "gadoteridol (Prohance)",
-            sortOrder: 5,
+            sortOrder: 3,
             isHidden: false,
             concentration: "0.5",
             concentrationUnit: "M",
@@ -311,7 +311,7 @@ class ContrastAgentTableViewController: UITableViewController {
         
         guard let gadopentatateDimeglumine = ContrastAgent(
             name: "gadopentatate dimeglumine (Magnevist)",
-            sortOrder: 6,
+            sortOrder: 4,
             isHidden: false,
             concentration: "0.5",
             concentrationUnit: "M",
@@ -325,7 +325,7 @@ class ContrastAgentTableViewController: UITableViewController {
         
         guard let gadodiamide = ContrastAgent(
             name: "gadodiamide (Omniscan)",
-            sortOrder: 7,
+            sortOrder: 5,
             isHidden: false,
             concentration: "0.5",
             concentrationUnit: "M",
@@ -339,7 +339,7 @@ class ContrastAgentTableViewController: UITableViewController {
         
         guard let gadobutrol = ContrastAgent(
             name: "gadobutrol (Gadavist)",
-            sortOrder: 9,
+            sortOrder: 6,
             isHidden: false,
             concentration: "1",
             concentrationUnit: "M",
@@ -353,7 +353,7 @@ class ContrastAgentTableViewController: UITableViewController {
         
         guard let ferumoxytol = ContrastAgent(
             name: "ferumoxytol (Feraheme)",
-            sortOrder: 0,
+            sortOrder: 7,
             isHidden: false,
             concentration: "30",
             concentrationUnit: "mg/ml",
