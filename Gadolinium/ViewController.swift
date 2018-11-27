@@ -14,9 +14,9 @@ class ViewController: UIViewController {
     var weightUnitConversion: Double!
     var maximumDose: Double!
     var concentration: Double!
-    let toolBar = UIToolbar()
     
     //MARK: --IBOutputs
+    @IBOutlet var CalculateButtonToolBar: UIToolbar!
     @IBOutlet weak var doseUnitLabel: UILabel!
     @IBOutlet weak var contrastAgentNameLabel: UILabel!
     @IBOutlet weak var contrastAgentDescriptionLabel: UILabel!
@@ -33,7 +33,6 @@ class ViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for:segue, sender: sender)
-        toolBar.isHidden = false
         
         guard let packageInsertViewController = segue.destination as? PackageInsertViewController else {
             fatalError("Unexpected Destination: \(segue.destination)")
@@ -105,6 +104,7 @@ class ViewController: UIViewController {
         setButtonColors()
         lbsButton.layer.cornerRadius = 4
         kgButton.layer.cornerRadius = 4
+        weightTextField.inputAccessoryView = CalculateButtonToolBar
     }
     
     override func didReceiveMemoryWarning() {
