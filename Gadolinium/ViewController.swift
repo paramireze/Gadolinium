@@ -33,7 +33,7 @@ class ViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for:segue, sender: sender)
-        toolBar.isHidden = true
+        toolBar.isHidden = false
         
         guard let packageInsertViewController = segue.destination as? PackageInsertViewController else {
             fatalError("Unexpected Destination: \(segue.destination)")
