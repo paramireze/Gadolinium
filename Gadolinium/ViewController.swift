@@ -254,6 +254,11 @@ class ViewController: UIViewController {
             return
         }
         
+        if (isInValidInput(input: dose!)) {
+            hideLabels(value: true)
+            return
+        }
+        
         setWeightUnit()
         validateDoseExceedsMaximum(dose: dose, maximumDose: maximumDose)
         displayResult(dose: dose!, weight: weight!)
