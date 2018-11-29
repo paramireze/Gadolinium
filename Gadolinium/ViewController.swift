@@ -104,16 +104,29 @@ class ViewController: UIViewController {
         setButtonColors()
         lbsButton.layer.cornerRadius = 4
         kgButton.layer.cornerRadius = 4
-        weightTextField.inputAccessoryView = CalculateButtonToolBar
+        setToolBar()
     }
+    
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
+    func setToolBar() {
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelCalculation))
+        let flexButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
+        let doneButton = UIBarButtonItem(title: "Calculate", style: .plain, target: self, action: #selector(formSubmit))
+        
+        CalculateButtonToolBar.setItems([cancelButton, flexButton, doneButton], animated: true)
+        CalculateButtonToolBar.sizeToFit()
+        weightTextField.inputAccessoryView = CalculateButtonToolBar
+        doseTextField.inputAccessoryView = CalculateButtonToolBar
+    }
+    
     func addLogo() {
-        let nav = self.navigationController?.navigationBar
+        _ = self.navigationController?.navigationBar
         
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
         imageView.contentMode = .scaleAspectFit
