@@ -146,14 +146,11 @@ class ViewController: UIViewController {
     
     func getWeightMultipliedByWeightUnit() -> Double {
         let weight: Double? = getWeight()
+        
         let result = weight! * weightUnitConversion!
         return round(result * 100) / 100
     }
 
-    func displayResult(dose: Double, weight: Double) {
-        let result = round(dose * (weight * weightUnitConversion) / concentration)
-        resultTextField.text = String(result) + " ml"
-    }
     
     func showFormula(dose: Double, weight: Double) {
         let doseText = String(dose)
@@ -286,6 +283,13 @@ class ViewController: UIViewController {
         return isInvalidInput
     }
     
+    func displayResult(dose: Double, weight: Double) {
+
+        let result = dose * (weight * weightUnitConversion) / concentration
+        let roundedResult = round(10 * result) / 10
+        resultTextField.text = String(roundedResult) + " ml"
+    }
+    
     func alert(title: String, message: String) {
         let alertController = UIAlertController(title: title, message:
             message, preferredStyle: UIAlertControllerStyle.alert)
@@ -294,4 +298,3 @@ class ViewController: UIViewController {
         self.present(alertController, animated: true, completion: nil)
     }
 }
-
