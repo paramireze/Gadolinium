@@ -243,6 +243,11 @@ class ViewController: UIViewController {
         )
     }
     
+    @objc func cancelCalculation() {
+        weightTextField.text = ""
+        view.endEditing(true)
+    }
+    
     @objc func formSubmit() {
         let dose: Double! = getDose()
         let weight: Double? = getWeight()
@@ -257,6 +262,7 @@ class ViewController: UIViewController {
         displayResult(dose: dose!, weight: weight!)
         showFormula(dose: dose!, weight: weight!)
         hideLabels(value: false)
+        view.endEditing(true)
         
     }
     
