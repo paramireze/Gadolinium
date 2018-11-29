@@ -141,7 +141,11 @@ class ViewController: UIViewController {
     }
     
     func setWeightUnit() {
-        weightUnitConversion = isLbsSelected() ? 0.453592 : 1.0
+        weightUnitConversion = getWeightUnit()
+    }
+    
+    func getWeightUnit() -> Double {
+        return isLbsSelected() ? 0.453592 : 1.0
     }
     
     func getWeightMultipliedByWeightUnit() -> Double {
@@ -260,6 +264,7 @@ class ViewController: UIViewController {
         }
         
         setWeightUnit()
+        validateWeightExceedsMaximum()
         validateDoseExceedsMaximum(dose: dose, maximumDose: maximumDose)
         displayResult(dose: dose!, weight: weight!)
         showFormula(dose: dose!, weight: weight!)
@@ -272,6 +277,24 @@ class ViewController: UIViewController {
         if (dose > maximumDose) {
             alert(title: "Maximum dose exceeded", message: "Maximum dose is "  + String(maximumDose))
         }
+    }
+    
+    func validateWeightExceedsMaximum() {
+        let weight = getWeight()
+        
+        if (isLbsSelected()) {
+            if (weight > 500) {
+                sendMaximumWeightAlertMessage()
+            }
+        } else {
+            if (weight > 226.8) {
+                sendMaximumWeightAlertMessage()
+            }
+        }
+    }
+    
+    func sendMaximumWeightAlertMessage() {
+        alert(title: "Maximum Weight Exceeded", message: "Maximum Weight of 500 lbs (226.8 kg) Exceeded")
     }
     
     func isInValidInput(input: Double) -> Bool {
