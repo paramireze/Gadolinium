@@ -83,7 +83,6 @@ class ViewController: UIViewController {
         if let contrastAgent = contrastAgent {
             
             let contrastAgentString = contrastAgent.name
-            print(contrastAgent.notes)
             
             contrastAgentNameLabel.text = contrastAgentString
             if (contrastAgent.notes != nil) {
