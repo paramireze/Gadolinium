@@ -190,7 +190,7 @@
                                                     <constraint firstAttribute="width" constant="90" id="KH5-ih-asH"/>
                                                 </constraints>
                                                 <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad" keyboardAppearance="light" returnKeyType="done"/>
                                                 <connections>
                                                     <action selector="weightTextBegin:" destination="BYZ-38-t0r" eventType="editingDidBegin" id="bUp-Wv-lje"/>
@@ -245,13 +245,13 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="vAa-eD-Npd">
-                                        <rect key="frame" x="0.0" y="175" width="180" height="10"/>
+                                        <rect key="frame" x="0.0" y="175" width="180" height="20"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="10" id="r4O-fb-Yec"/>
+                                            <constraint firstAttribute="height" constant="20" id="r4O-fb-Yec"/>
                                         </constraints>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aFa-fa-6lS">
-                                        <rect key="frame" x="0.0" y="185" width="180" height="40"/>
+                                        <rect key="frame" x="0.0" y="195" width="180" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="YvX-84-M1z"/>
                                         </constraints>
@@ -260,43 +260,49 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="AxD-uI-kvF">
-                                        <rect key="frame" x="0.0" y="225" width="180" height="10"/>
+                                        <rect key="frame" x="0.0" y="235" width="180" height="20"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="10" id="RoN-2A-kJp"/>
+                                            <constraint firstAttribute="height" constant="20" id="RoN-2A-kJp"/>
                                         </constraints>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="V = (D x W) / C" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HZM-NM-Yxt">
-                                        <rect key="frame" x="0.0" y="235" width="180" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="255" width="180" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="1" green="0.064924154400000003" blue="0.060056682299999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d7C-vn-aSd">
-                                        <rect key="frame" x="0.0" y="255.5" width="180" height="160.5"/>
+                                        <rect key="frame" x="0.0" y="275.5" width="180" height="160.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="1" green="0.064924154400000003" blue="0.060056682299999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="t7e-aZ-6M8">
-                                        <rect key="frame" x="0.0" y="416" width="180" height="10"/>
+                                        <rect key="frame" x="0.0" y="436" width="180" height="10"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="10" id="Lde-7r-kKa"/>
                                         </constraints>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cES-NR-lbV">
-                                        <rect key="frame" x="0.0" y="426" width="180" height="208"/>
+                                        <rect key="frame" x="0.0" y="446" width="180" height="188"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="14" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RlU-va-bt3">
-                                                <rect key="frame" x="18" y="0.0" width="341" height="185"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="19" baselineAdjustment="alignBaselines" translatesAutoresizingMaskIntoConstraints="NO" id="RlU-va-bt3">
+                                                <rect key="frame" x="16" y="-10" width="351" height="185"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <string key="text">Recommended Rounding to the nearest ml, except for children*
+                                                <attributedString key="attributedText">
+                                                    <fragment>
+                                                        <mutableString key="content">Recommended Rounding to the nearest ml,  except for children*
         
-12.4 ml should be 12ml 13.9 ml should be 14mldose
+12.4 ml should be 12ml 13.9 ml should be 14ml
 * but 1.2 ml should be 1.2ml
-        
-OK to round down to nearest vial size in many circumstances to save opening new vial e.g., if calculated dose is 11ml, use 10ml instead</string>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+
+OK to round down to nearest vial size in many circumstances to save opening new vial e.g., if calculated dose is 11ml, use 10ml instead</mutableString>
+                                                        <attributes>
+                                                            <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <font key="NSFont" size="13" name=".AppleSystemUIFont"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -342,7 +348,7 @@ OK to round down to nearest vial size in many circumstances to save opening new 
                     </items>
                 </toolbar>
             </objects>
-            <point key="canvasLocation" x="2602" y="27"/>
+            <point key="canvasLocation" x="2600.8000000000002" y="26.53673163418291"/>
         </scene>
         <!--Package Insert View Controller-->
         <scene sceneID="0dg-Rt-5in">
